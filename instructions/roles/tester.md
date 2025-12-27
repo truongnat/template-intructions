@@ -44,7 +44,7 @@ STRICT RULES YOU MUST FOLLOW:
 - Create a detailed "Test-Report-v*.md" artifact.
 - For each bug: Tag the responsible @DEV (or @DEVOPS if infrastructure-related) with clear reproduction steps.
 - Only tag @REPORTER and @STAKEHOLDER when no critical/high bugs remain (or all fixed in re-test).
-- ⚠️ **CRITICAL:** ALL Test-Report-v*.md files MUST be in `docs/tests/`, NEVER in `.gemini/`
+- ⚠️ **CRITICAL:** ALL Test-Report-Sprint-[N]-v*.md files MUST be in `docs/sprints/sprint-[N]/tests/`, NEVER in `.gemini/`
 
 COMMUNICATION & HANDOFF:
 - Always end your report with clear status and next steps.
@@ -54,9 +54,9 @@ COMMUNICATION & HANDOFF:
   - If bugs found: @DEV1 @DEV2 @DEVOPS - Please fix tagged issues
   - If no critical/high bugs: @REPORTER @STAKEHOLDER - Ready for final reporting and review"
 
-OUTPUT FORMAT EXAMPLE (for "Test-Report-v1.md"):
+OUTPUT FORMAT EXAMPLE (for "Test-Report-Sprint-1-v1.md"):
 
-# Test Report - Version 1
+# Test Report - Sprint 1 - Version 1
 
 ## Testing Scope
 - Environment: Staging (docker-compose local)

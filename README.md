@@ -8,6 +8,42 @@ This repository contains the instruction sets and templates for **TeamLifecycle*
 
 By invoking specific roles using `@tags`, you can trigger a coordinated workflow that takes a project from planning to deployment and reporting.
 
+## ✨ Why Use TeamLifecycle? (Benefits & Optimization)
+
+Adopting this **Agentic SDLC** approach offers significant advantages over standard single-agent coding:
+
+### 1. 🚀 Optimized Process & Quality Assurance
+-   **Zero Ambiguity**: By splitting **Planning**, **Design**, and **Implementation**, potential issues are caught *before* code is written.
+-   **Strict "Definition of Done"**: Code isn't just "written"; it's **designed**, **reviewed**, **security-checked**, **implemented**, and **tested**.
+-   **Self-Correction**: The workflow includes loop-backs (cycle repeats) if a design is rejected or critical bugs are found, ensuring the final output is robust.
+
+### 2. 🧠 Specialized Intelligence (Agentic Roles)
+Instead of one "generic" AI trying to do everything, you get specialized experts:
+-   **@SA** thinks purely about *scalability and database structure*.
+-   **@UIUX** focuses solely on *user flow and aesthetics*.
+-   **@SECA** acts as a dedicated adversary to find *vulnerabilities*.
+-   **@DEV** can focus purely on *implementation details* without worrying about high-level architecture.
+
+### 3. 📚 Comprehensive Documentation (Audit Trail)
+-   This system **automatically generates** a full project documentation suite (`docs/`):
+    -   Requirement Plans & Backlogs
+    -   Technical & Design Specs
+    -   Security & QA Reports
+    -   Test Results & Change Logs
+-   This makes "handover" to human teams or other agents seamless.
+
+### 4. ⚡ Benefit Analysis
+| Feature | Traditional AI Coding | TeamLifecycle (Agentic) |
+| :--- | :--- | :--- |
+| **Context** | Often loses context in long chats | Structured artifacts preserve context per Sprint |
+| **Safety** | May generate insecure code | Dedicated **@SECA** review step |
+| **Architecture** | Often "spaghetti code" | Planned by **@SA** before implementation |
+| **Debugging** | User has to debug | **@TESTER** finds bugs, **@DEV** fixes them |
+
+### 5. 🔄 Sprint-Based Organization
+-   Optimized for iterative development.
+-   Keeps files organized by Sprint (`docs/sprints/sprint-X/`), preventing clutter and ensuring version control.
+
 ## 📁 Repository Structure
 
 ```

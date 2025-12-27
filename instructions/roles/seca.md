@@ -39,7 +39,7 @@ STRICT RULES YOU MUST FOLLOW:
 - If rejecting: Clearly list critical issues and tag responsible roles for immediate revision.
 - Base review strictly on approved designs and requirements.
 - Do not add new features — only recommend security improvements.
-- ⚠️ **CRITICAL:** ALL Security-Review-Report-v*.md files MUST be in `docs/reviews/`, NEVER in `.gemini/`
+- ⚠️ **CRITICAL:** ALL Security-Review-Report-Sprint-[N]-v*.md files MUST be in `docs/sprints/sprint-[N]/reviews/`, NEVER in `.gemini/`
 
 COMMUNICATION & HANDOFF:
 - Always end your report with a clear decision and next steps.
@@ -49,9 +49,9 @@ COMMUNICATION & HANDOFF:
   - If APPROVED: @DEV1 @DEV2 @DEVOPS - Proceed (address high/medium recommendations when possible)
   - If REJECTED: @SA @UIUX - Immediate revision required for critical issues"
 
-OUTPUT FORMAT EXAMPLE (for "Security-Review-Report-v1.md"):
+OUTPUT FORMAT EXAMPLE (for "Security-Review-Report-Sprint-1-v1.md"):
 
-# Security Review Report - Version 1
+# Security Review Report - Sprint 1 - Version 1
 
 ## Reviewed Artifacts
 - Project-Plan-v1.md

@@ -138,34 +138,38 @@ Every action must be tagged with appropriate hashtags:
 - Any change requires PM + PO to revise plan and get user re-approval
 
 ### 5. Artifact Naming Convention
-Use versioned names:
+Use versioned names attached to the current Sprint:
 | Artifact | Owner |
 |----------|-------|
-| `Project-Plan-v*.md` | PM |
-| `Product-Backlog-v*.md` | PO |
-| `UIUX-Design-Spec-v*.md` | UIUX |
-| `Backend-Design-Spec-v*.md` | SA |
-| `Design-Verification-Report-v*.md` | QA |
-| `Security-Review-Report-v*.md` | SecA |
-| `Development-Log-v*.md` | DEV |
-| `DevOps-Plan-and-Log-v*.md` | DevOps |
-| `Test-Report-v*.md` | TESTER |
-| `Phase-Report-*.md` | REPORTER |
+| `Project-Plan-Sprint-[N]-v*.md` | PM |
+| `Product-Backlog-Sprint-[N]-v*.md` | PO |
+| `UIUX-Design-Spec-Sprint-[N]-v*.md` | UIUX |
+| `Backend-Design-Spec-Sprint-[N]-v*.md` | SA |
+| `Design-Verification-Report-Sprint-[N]-v*.md` | QA |
+| `Security-Review-Report-Sprint-[N]-v*.md` | SecA |
+| `Development-Log-Sprint-[N]-v*.md` | DEV |
+| `DevOps-Plan-and-Log-Sprint-[N]-v*.md` | DevOps |
+| `Test-Report-Sprint-[N]-v*.md` | TESTER |
+| `Phase-Report-Sprint-[N]-v*.md` | REPORTER |
 | `Master-Documentation.md` | REPORTER |
 | `Final-Project-Report.md` | REPORTER |
 | `Final-Approval-Report.md` | STAKEHOLDER |
 
 ⚠️ **CRITICAL LOCATION RULE:**  
-ALL project artifacts MUST be created in the project workspace with organized structure:
+ALL project artifacts MUST be created in the project workspace with organized structure based on **Sprint**:
 
-| Folder | Content | Owner |
-|--------|---------|-------|
-| `docs/plans/` | Project-Plan-v*.md, Product-Backlog-v*.md | PM, PO |
-| `docs/designs/` | Backend-Design-Spec-v*.md, UIUX-Design-Spec-v*.md | SA, UIUX |
-| `docs/reviews/` | Design-Verification-Report-v*.md, Security-Review-Report-v*.md | QA, SecA |
-| `docs/logs/` | Development-Log-v*.md, DevOps-Plan-and-Log-v*.md | DEV, DevOps |
-| `docs/tests/` | Test-Report-v*.md | TESTER |
-| `docs/reports/` | Phase-Report-*.md, Final-Project-Report.md, Final-Approval-Report.md | REPORTER, STAKEHOLDER |
+**Base Directory:** `docs/sprints/sprint-[N]/`
+
+| Category | Folder Path | Content Example | Owner |
+|----------|-------------|-----------------|-------|
+| Plans | `docs/sprints/sprint-[N]/plans/` | `Project-Plan-Sprint-[N]-v*.md`, `Product-Backlog-Sprint-[N]-v*.md` | PM, PO |
+| Designs | `docs/sprints/sprint-[N]/designs/` | `Backend-Design-Spec-Sprint-[N]-v*.md`, `UIUX-Design-Spec-Sprint-[N]-v*.md` | SA, UIUX |
+| Reviews | `docs/sprints/sprint-[N]/reviews/` | `Design-Verification-Report-Sprint-[N]-v*.md`, `Security-Review-Report-Sprint-[N]-v*.md` | QA, SecA |
+| Logs | `docs/sprints/sprint-[N]/logs/` | `Development-Log-Sprint-[N]-v*.md`, `DevOps-Plan-and-Log-Sprint-[N]-v*.md` | DEV, DevOps |
+| Tests | `docs/sprints/sprint-[N]/tests/` | `Test-Report-Sprint-[N]-v*.md` | TESTER |
+| Reports | `docs/sprints/sprint-[N]/reports/` | `Phase-Report-Sprint-[N]-v*.md` | REPORTER |
+| Global | `docs/global/reports/` | `Final-Project-Report.md`, `Final-Approval-Report.md` | REPORTER, STAKEHOLDER |
+| Global | `docs/global/` | `Master-Documentation.md` | REPORTER |
 
 **FORBIDDEN:** `.gemini/` directory (reserved for instructions only)
 

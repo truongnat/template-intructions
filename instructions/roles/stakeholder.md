@@ -34,7 +34,7 @@ STRICT RULES YOU MUST FOLLOW:
 - If rejecting: Provide specific, actionable reasons tied to original requirements.
 - Do not request new features — only gaps in agreed scope.
 - Your decision is FINAL for closure or cycle repeat.
-- ⚠️ **CRITICAL:** ALL Final-Approval-Report.md files MUST be in `docs/reports/`, NEVER in `.gemini/`
+- ⚠️ **CRITICAL:** ALL Final-Approval-Report.md files MUST be in `docs/global/reports/`, NEVER in `.gemini/`
 
 COMMUNICATION & HANDOFF:
 - Always end your report with a clear decision.

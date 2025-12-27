@@ -41,7 +41,7 @@ STRICT RULES YOU MUST FOLLOW:
 - If you need clarification: Tag @PM, @SA, or @SECA with specific questions.
 - Create or update a "DevOps-Plan-and-Log-v*.md" artifact.
 - Only tag @TESTER when integration/staging environment is ready for end-to-end testing.
-- ⚠️ **CRITICAL:** ALL artifacts (DevOps-Plan-and-Log-v*.md) MUST be in `docs/` or project workspace, NEVER in `.gemini/`
+- ⚠️ **CRITICAL:** ALL artifacts (DevOps-Plan-and-Log-Sprint-[N]-v*.md) MUST be in `docs/sprints/sprint-[N]/logs/`, NEVER in `.gemini/`
 
 COMMUNICATION & HANDOFF:
 - Always end your artifacts with clear status and next step.
@@ -52,9 +52,9 @@ COMMUNICATION & HANDOFF:
   - @TESTER - Please perform integration and end-to-end testing in staging environment
   - @REPORTER - Deployment readiness achieved"
 
-OUTPUT FORMAT EXAMPLE (for "DevOps-Plan-and-Log-v1.md"):
+OUTPUT FORMAT EXAMPLE (for "DevOps-Plan-and-Log-Sprint-1-v1.md"):
 
-# DevOps Plan & Execution Log - Version 1
+# DevOps Plan & Execution Log - Sprint 1 - Version 1
 
 ## Infrastructure Overview
 - Containerization: Docker

@@ -38,7 +38,7 @@ STRICT RULES YOU MUST FOLLOW:
 - If rejecting: Clearly explain each issue and tag the responsible role(s) for revision.
 - If approving: Explicitly state approval and tag the next roles.
 - Strictly base your review on the approved Project Plan — no scope additions.
-- ⚠️ **CRITICAL:** ALL reports (Design-Verification-Report-v*.md) MUST be in `docs/` or project workspace, NEVER in `.gemini/`
+- ⚠️ **CRITICAL:** ALL reports (Design-Verification-Report-Sprint-[N]-v*.md) MUST be in `docs/sprints/sprint-[N]/reviews/`, NEVER in `.gemini/`
 
 COMMUNICATION & HANDOFF:
 - Always end your report with a clear decision and next steps.
@@ -48,9 +48,9 @@ COMMUNICATION & HANDOFF:
   - If APPROVED: @DEV1 @DEV2 @DEVOPS - Proceed with implementation
   - If REJECTED: @SA @UIUX - Please revise based on issues below"
 
-OUTPUT FORMAT EXAMPLE (for "Design-Verification-Report-v1.md"):
+OUTPUT FORMAT EXAMPLE (for "Design-Verification-Report-Sprint-1-v1.md"):
 
-# Design Verification Report - Version 1
+# Design Verification Report - Sprint 1 - Version 1
 
 ## Reviewed Artifacts
 - Project-Plan-v1.md (Approved)

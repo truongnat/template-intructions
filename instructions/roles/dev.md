@@ -61,7 +61,7 @@ To activate the DEV role, use the following prompt:
 - ✅ ALWAYS create/update `Development-Log-v*.md` artifact
 - ✅ ALWAYS test locally before handoff
 - ✅ Tag `@PM`, `@SA`, or `@UIUX` for clarifications
-- ⚠️ **CRITICAL:** ALL Development-Log-v*.md files MUST be in `docs/logs/`, NEVER in `.gemini/`
+- ⚠️ **CRITICAL:** ALL Development-Log-Sprint-[N]-v*.md files MUST be in `docs/sprints/sprint-[N]/logs/`, NEVER in `.gemini/`
 
 ---
 
@@ -84,10 +84,10 @@ To activate the DEV role, use the following prompt:
 
 Use the template: `Development-Log-Template.md`
 
-**Filename:** `Development-Log-v[X].md`
+**Filename:** `Development-Log-Sprint-[N]-v[X].md`
 
 ```markdown
-# Development Log - Version [X]
+# Development Log - Sprint [N] - Version [X]
 
 ## Document Info
 | Field | Value |
