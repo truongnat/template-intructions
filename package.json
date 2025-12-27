@@ -1,10 +1,10 @@
 {
-  "name": "@truongnat/template-instructions",
+  "name": "template-instructions",
   "version": "1.0.0",
   "description": "CLI to scaffold clean architecture projects",
   "main": "index.js",
   "bin": {
-    "create-template": "./bin/cli.js" 
+    "create-instructions": "./bin/cli.js" 
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
