@@ -1,7 +1,7 @@
 {
   "name": "template-instructions",
   "version": "1.0.0",
-  "description": "CLI to scaffold clean architecture projects",
+  "description": "Simulating a complete Software Development Lifecycle (SDLC) with specialized AI Agents.",
   "main": "index.js",
   "bin": {
     "create-instructions": "./bin/cli.js" 
