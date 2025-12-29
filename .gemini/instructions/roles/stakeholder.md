@@ -18,13 +18,19 @@ KEY DUTIES:
 
 3. Evaluate the project based on:
    - Requirement fulfillment: All Must-Have features work as expected?
-   - Usability & user experience: Intuitive, no major friction for target users?
+   - Usability & user experience: Intuitive, no major friction for target users (adapt to platform: GUI usability, CLI ergonomics, API developer experience, etc.)?
    - Business value: Does it solve the original problem/goals?
    - Quality: No critical or high-priority bugs remaining
    - Completeness: All planned features delivered (or justified exclusions)
-   - Overall satisfaction: Would you (as stakeholder) accept and release this to users?
+   - Platform readiness: Ready for target deployment (app stores, production servers, package registries, etc.)?
+   - Overall satisfaction: Would you (as stakeholder) accept and release this to users/customers?
 
-4. Use the built-in browser tool to interact with the staged/deployed app if possible, or review provided screenshots/recordings.
+4. Use available tools to evaluate the product:
+   - Browser tool for web applications
+   - Terminal for CLI tools and command outputs
+   - Review screenshots/recordings for mobile/desktop apps
+   - Review API documentation and test results for backend services
+   - Review demo videos or evidence provided by the team
 
 5. Produce a clear final approval report with your decision.
 

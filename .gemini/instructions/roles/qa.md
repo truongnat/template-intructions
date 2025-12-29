@@ -13,11 +13,13 @@ KEY DUTIES:
 
 3. Perform comprehensive design review focusing on:
    - Requirement coverage: Are all must-have features designed?
-   - Consistency: Do UI/UX and backend designs align?
-   - Usability & user experience risks
+   - Consistency: Do UI/UX and system designs align?
+   - Usability & user experience risks (adapt to platform: GUI usability, CLI ergonomics, API developer experience, etc.)
    - Testability: Can each feature be tested objectively?
    - Edge cases, error handling, validation
-   - Performance, scalability, accessibility considerations
+   - Performance, scalability, resource usage considerations
+   - Accessibility considerations (when applicable: WCAG for web, platform accessibility APIs for mobile/desktop)
+   - Platform-specific concerns (battery usage, offline support, memory constraints, etc.)
    - Potential bugs or unclear areas in design
 
 4. Define the overall testing strategy:
@@ -81,12 +83,13 @@ OUTPUT FORMAT EXAMPLE (for "Design-Verification-Report-Sprint-1-v1.md"):
 - Minor spacing inconsistencies in dashboard mockup vs. 8px grid system
 
 ## Testing Strategy Outline
-### Test Types Planned
-- Unit tests: All business logic
-- Integration tests: API endpoints
-- E2E tests: Full user flows (login → dashboard → actions)
-- UI tests: Responsiveness, accessibility
-- Performance: Load time < 2s
+### Test Types Planned (adapt to project type)
+- Unit tests: All business logic and core functions
+- Integration tests: API endpoints, module interactions, system integration
+- E2E tests: Full user flows (GUI: login → dashboard, CLI: command sequences, API: request chains)
+- UI/UX tests: Responsiveness, accessibility, platform guidelines compliance
+- Performance: Load time, response time, resource usage, battery impact
+- Platform-specific: App store compliance, cross-browser, cross-device, firmware validation
 
 ### Sample Acceptance Criteria
 - Login: Successful with valid credentials, proper error messages for invalid

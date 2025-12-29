@@ -102,6 +102,50 @@ It ensures strict compliance, full traceability, auto-communication, and profess
 
 ---
 
+## 📚 Knowledge Base System
+
+### Purpose
+The Knowledge Base stores lessons learned, bug patterns, difficult features, and solutions that required multiple attempts. This serves as project memory for future reference.
+
+### When to Create Entry
+Create a knowledge entry when:
+- Bug required 3+ attempts to fix
+- Feature implementation was particularly challenging
+- Solution was non-obvious or counter-intuitive
+- Issue is likely to recur in similar projects
+- Root cause analysis revealed important insights
+
+### Entry Naming
+**Format:** `KB-[YYYY-MM-DD]-[###]-[short-title].md`
+
+**Location:** `.gemini/instructions/knowledge-base/[category]/[severity]/`
+
+### Categories
+| Category | Folder | Description |
+|----------|--------|-------------|
+| Bugs | `knowledge-base/bugs/[severity]/` | Bug patterns and fixes |
+| Features | `knowledge-base/features/[type]/` | Complex feature implementations |
+| Architecture | `knowledge-base/architecture/` | Architecture decisions |
+| Security | `knowledge-base/security/` | Security issues and solutions |
+| Performance | `knowledge-base/performance/` | Performance optimizations |
+| Platform | `knowledge-base/platform-specific/[platform]/` | Platform-specific issues |
+
+### Workflow
+1. **Create Entry:** Use `Knowledge-Entry-Template.md`
+2. **Document:** Include problem, root cause, solution, prevention
+3. **Tag:** Add appropriate tags for searchability
+4. **Update Index:** Add to `knowledge-base/index.md`
+5. **Notify:** Tag @REPORTER for review
+
+### Search Before Starting
+Before implementing complex features or fixing bugs:
+1. Check `knowledge-base/index.md`
+2. Search by keywords, technology, or error messages
+3. Review similar entries
+4. Adapt solutions to current context
+
+---
+
 ## Core Rules Every Agent MUST Obey
 
 ### 1. Approval Gates
@@ -114,8 +158,9 @@ Critical phases require explicit approval:
 
 ### 2. Auto-Communication via @Tags
 Always use @role tags to notify next agents.
-- **Available roles:** @PM, @PO, @SA, @UIUX, @QA, @SECA, @DEV, @DEVOPS, @TESTER, @REPORTER, @STAKEHOLDER
+- **Available roles:** @ORCHESTRATOR, @PM, @PO, @SA, @UIUX, @QA, @SECA, @DEV, @DEVOPS, @TESTER, @REPORTER, @STAKEHOLDER
 - Example: `### Next Step: @SA - Start designing` or `@TESTER - Please test`
+- **Orchestrator mode:** Add `--mode=full-auto` or `--mode=semi-auto` to enable automation
 
 ### 3. Mandatory Documentation Tags
 Every action must be tagged with appropriate hashtags:
@@ -132,6 +177,7 @@ Every action must be tagged with appropriate hashtags:
 | **Deployment** | `#deployed-staging`, `#deployed-production` |
 | **Research** | `#searching` |
 | **Reporting** | `#reporting`, `#stakeholder-review` |
+| **Knowledge** | `#knowledge-base`, `#lessons-learned` |
 
 ### 4. No Scope Creep
 - No new features or changes outside approved Project Plan
@@ -144,7 +190,7 @@ Use versioned names attached to the current Sprint:
 | `Project-Plan-Sprint-[N]-v*.md` | PM |
 | `Product-Backlog-Sprint-[N]-v*.md` | PO |
 | `UIUX-Design-Spec-Sprint-[N]-v*.md` | UIUX |
-| `Backend-Design-Spec-Sprint-[N]-v*.md` | SA |
+| `System-Design-Spec-Sprint-[N]-v*.md` | SA |
 | `Design-Verification-Report-Sprint-[N]-v*.md` | QA |
 | `Security-Review-Report-Sprint-[N]-v*.md` | SecA |
 | `Development-Log-Sprint-[N]-v*.md` | DEV |
@@ -163,7 +209,7 @@ ALL project artifacts MUST be created in the project workspace with organized st
 | Category | Folder Path | Content Example | Owner |
 |----------|-------------|-----------------|-------|
 | Plans | `docs/sprints/sprint-[N]/plans/` | `Project-Plan-Sprint-[N]-v*.md`, `Product-Backlog-Sprint-[N]-v*.md` | PM, PO |
-| Designs | `docs/sprints/sprint-[N]/designs/` | `Backend-Design-Spec-Sprint-[N]-v*.md`, `UIUX-Design-Spec-Sprint-[N]-v*.md` | SA, UIUX |
+| Designs | `docs/sprints/sprint-[N]/designs/` | `System-Design-Spec-Sprint-[N]-v*.md`, `UIUX-Design-Spec-Sprint-[N]-v*.md` | SA, UIUX |
 | Reviews | `docs/sprints/sprint-[N]/reviews/` | `Design-Verification-Report-Sprint-[N]-v*.md`, `Security-Review-Report-Sprint-[N]-v*.md` | QA, SecA |
 | Logs | `docs/sprints/sprint-[N]/logs/` | `Development-Log-Sprint-[N]-v*.md`, `DevOps-Plan-and-Log-Sprint-[N]-v*.md` | DEV, DevOps |
 | Tests | `docs/sprints/sprint-[N]/tests/` | `Test-Report-Sprint-[N]-v*.md` | TESTER |
@@ -201,7 +247,15 @@ After completing any task or phase, the role **MUST** create the corresponding r
 - Artifacts must be placed in the exact folder structure: `docs/sprints/sprint-[N]/[category]/`
 - Use version numbers (v1, v2, etc.) for revisions.
 
-### 11. Completion Criteria
+### 11. Knowledge Base Contribution
+When encountering difficult bugs or features:
+- **Document in Knowledge Base** if bug required 3+ attempts or feature was particularly challenging
+- Use `Knowledge-Entry-Template.md` template
+- Update `knowledge-base/index.md`
+- Tag @REPORTER for review
+- **Search Knowledge Base first** before starting complex work
+
+### 12. Completion Criteria
 - ✅ STAKEHOLDER approves
 - ✅ No critical/high bugs remain
 - ✅ All Must-Have features delivered and verified

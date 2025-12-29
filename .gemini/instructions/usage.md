@@ -7,7 +7,16 @@
 
 ## 🎯 Overview
 
-This instruction set simulates a **complete Software Development Lifecycle (SDLC)** with specialized roles. When you invoke a role using `@tag`, Gemini will act as that role and perform tasks according to the defined workflow.
+This instruction set simulates a **complete Software Development Lifecycle (SDLC)** with specialized roles. When you invoke a role using `@tag`, the AI will act as that role and perform tasks according to the defined workflow.
+
+**Supports all project types:**
+- 🌐 Web Applications (SPA, SSR, PWA)
+- 📱 Mobile Apps (iOS, Android, Cross-platform)
+- 🖥️ Desktop Applications (Windows, macOS, Linux)
+- 🔌 Embedded Systems & IoT
+- ⚙️ CLI Tools & Utilities
+- 📚 Libraries & SDKs
+- 🔗 APIs & Backend Services
 
 ---
 
@@ -16,10 +25,11 @@ This instruction set simulates a **complete Software Development Lifecycle (SDLC
 ```
 .gemini/instructions/
 ├── global.md                    # Global rules (mandatory)
+├── usage.md                     # This usage guide
 ├── roles/                       # Team roles
 │   ├── pm.md                    # Project Manager
 │   ├── po.md                    # Product Owner
-│   ├── sa.md                    # Solution Architect
+│   ├── sa.md                    # System Analyst
 │   ├── designer.md              # UI/UX Designer
 │   ├── qa.md                    # Quality Assurance
 │   ├── seca.md                  # Security Analyst
@@ -28,29 +38,91 @@ This instruction set simulates a **complete Software Development Lifecycle (SDLC
 │   ├── tester.md                # Tester
 │   ├── reporter.md              # Reporter
 │   └── stakeholder.md           # Stakeholder
-└── templates/                   # Document templates
-    ├── Project-Plan-Template.md
-    ├── Product-Backlog-Template.md
-    ├── Backend-Design-Spec-Template.md
-    ├── Design-Verification-Report-Template.md
-    ├── Security-Review-Report-Template.md
-    ├── Development-Log-Template.md
-    ├── DevOps-Plan-Template.md
-    ├── Test-Report-Template.md
-    ├── Phase-Report-Template.md
-    ├── Final-Approval-Report-Template.md
-    ├── definition-of-done.md
-    └── incident-response.md
+├── templates/                   # Document templates
+│   ├── Project-Plan-Template.md
+│   ├── Product-Backlog-Template.md
+│   ├── System-Design-Spec-Template.md
+│   ├── UIUX-Design-Spec-Template.md
+│   ├── Design-Verification-Report-Template.md
+│   ├── Security-Review-Report-Template.md
+│   ├── Development-Log-Template.md
+│   ├── DevOps-Plan-Template.md
+│   ├── Test-Report-Template.md
+│   ├── Phase-Report-Template.md
+│   ├── Master-Documentation-Template.md
+│   ├── Final-Project-Report-Template.md
+│   ├── Final-Approval-Report-Template.md
+│   ├── Knowledge-Entry-Template.md
+│   ├── definition-of-done.md
+│   └── incident-response.md
+└── knowledge-base/              # Project memory
+    ├── README.md                # Knowledge base guide
+    ├── index.md                 # Searchable index
+    ├── bugs/                    # Bug patterns
+    ├── features/                # Complex features
+    ├── architecture/            # Architecture decisions
+    ├── security/                # Security issues
+    ├── performance/             # Optimizations
+    └── platform-specific/       # Platform issues
 ```
 
 ---
 
 ## 🚀 Getting Started
 
+### Execution Modes
+
+The system supports 3 execution modes:
+
+#### Mode 1: Manual (Default)
+You tag each role manually at each step. Full control, step-by-step.
+
+```
+@PM - I want to build a wedding website...
+[Review plan]
+"Approved"
+@SA - Begin backend design
+[Review design]
+@QA - Review design
+...
+```
+
+#### Mode 2: Semi-Auto
+Orchestrator auto-executes within phases, waits at phase boundaries.
+
+```
+@PM - I want to build a wedding website --mode=semi-auto
+[Review plan]
+"Approved"
+→ Auto-executes: SA + UIUX + PO → QA + SecA
+[Review design phase results]
+@ORCHESTRATOR - Continue to development
+→ Auto-executes: DEV + DevOps
+...
+```
+
+#### Mode 3: Full-Auto (Recommended for Speed)
+Orchestrator executes entire workflow, only stops at critical gates.
+
+```
+@PM - I want to build a wedding website --mode=full-auto
+[Review plan]
+"Approved"
+→ Auto-executes entire workflow
+→ Stops only at: Critical bugs, Final approval
+
+[30-60 minutes later]
+"⚠️ Decision required: 2 high-priority bugs found"
+[Make decision]
+→ Continues automatically
+"✅ Project complete, ready for stakeholder review"
+```
+
+---
+
 ### Step 1: Start a Project
 
-Invoke **PM** to begin planning:
-
+**Manual Mode:**
 ```
 @PM - I want to build a wedding website with:
 - Couple introduction page
@@ -59,7 +131,17 @@ Invoke **PM** to begin planning:
 - RSVP form
 ```
 
-PM will create `Project-Plan-v1.md` and wait for your approval.
+**Full-Auto Mode:**
+```
+@PM - I want to build a wedding website with:
+- Couple introduction page
+- Countdown timer
+- Photo gallery
+- RSVP form
+--mode=full-auto
+```
+
+PM will create `Project-Plan-Sprint-1-v1.md` and wait for your approval.
 
 ### Step 2: Approval
 
@@ -67,44 +149,83 @@ After reviewing the plan, respond with:
 - ✅ **"Approved"** - Proceed to next phase
 - 🔄 **Provide feedback** - PM will revise and create a new version
 
-### Step 3: Automatic Workflow
+### Step 3: Workflow Execution
 
-Once approved, roles are triggered automatically in sequence:
+**Manual Mode:** You tag each role as needed
+
+**Semi-Auto/Full-Auto Mode:** Orchestrator handles the flow
 
 ```
-PM → SA + UIUX + PO → QA + SecA → DEV + DevOps → TESTER → REPORTER → STAKEHOLDER
+Approved → Design (SA+UIUX+PO) → Review (QA+SecA) → Development (DEV+DevOps) 
+→ Testing (TESTER) → Reporting (REPORTER) → Final Review (STAKEHOLDER)
+```
+
+---
+
+## 🤖 Orchestrator Commands
+
+### Check Status
+```
+@ORCHESTRATOR - Status
+```
+
+### Pause/Resume
+```
+@ORCHESTRATOR - Pause
+@ORCHESTRATOR - Resume
+```
+
+### Change Mode
+```
+@ORCHESTRATOR - Switch to semi-auto mode
+@ORCHESTRATOR - Switch to manual mode
+```
+
+### Skip to Phase (use with caution)
+```
+@ORCHESTRATOR - Skip to testing phase
 ```
 
 ---
 
 ## 📋 Roles & Tags
 
-| Role | Tag | Responsibility |
-|------|-----|----------------|
-| **Project Manager** | `@PM` | Planning, scope management, team coordination |
-| **Product Owner** | `@PO` | Backlog management, feature prioritization |
-| **Solution Architect** | `@SA` | Backend architecture, database, API design |
-| **UI/UX Designer** | `@UIUX` | Interface design, user experience |
-| **QA Analyst** | `@QA` | Design review, quality assurance |
-| **Security Analyst** | `@SECA` | Security assessment |
-| **Developer** | `@DEV` | Code implementation |
-| **DevOps** | `@DEVOPS` | CI/CD, deployment, infrastructure |
-| **Tester** | `@TESTER` | Functional testing, bug detection |
-| **Reporter** | `@REPORTER` | Progress reports, documentation |
-| **Stakeholder** | `@STAKEHOLDER` | Final approval |
+| Role | Tag | Responsibility | Works On |
+|------|-----|----------------|----------|
+| **Orchestrator** | `@ORCHESTRATOR` | Workflow automation, auto-execute phases | All project types |
+| **Project Manager** | `@PM` | Planning, scope management, team coordination | All project types |
+| **Product Owner** | `@PO` | Backlog management, feature prioritization, business value | All project types |
+| **System Analyst** | `@SA` | System architecture, data models, interfaces (API/CLI/Protocol) | All project types |
+| **UI/UX Designer** | `@UIUX` | Interface design, user experience (GUI/CLI/API DX) | GUI, CLI, API projects |
+| **QA Analyst** | `@QA` | Design review, quality assurance, testability | All project types |
+| **Security Analyst** | `@SECA` | Security assessment, vulnerability analysis | All project types |
+| **Developer** | `@DEV` | Code implementation across all platforms | All project types |
+| **DevOps** | `@DEVOPS` | CI/CD, deployment (cloud/stores/packages), infrastructure | All project types |
+| **Tester** | `@TESTER` | Functional testing, bug detection, platform testing | All project types |
+| **Reporter** | `@REPORTER` | Progress reports, comprehensive documentation | All project types |
+| **Stakeholder** | `@STAKEHOLDER` | Final approval, business acceptance | All project types |
 
 ---
 
 ## 🏷️ Important Tags
 
 ### Phase Tags
-| Tag | Description |
-|-----|-------------|
-| `#planning` | Planning phase |
-| `#designing` | Design phase |
-| `#development` | Development phase |
-| `#testing` | Testing phase |
-| `#reporting` | Reporting phase |
+| Tag | Description | Used By |
+|-----|-------------|---------|
+| `#orchestrator` | Workflow automation | ORCHESTRATOR |
+| `#automation` | Automated execution | ORCHESTRATOR |
+| `#planning` | Planning phase | PM |
+| `#product-owner` | Product ownership activities | PO |
+| `#backlog` | Backlog management | PO |
+| `#designing` | Design phase (system architecture) | SA |
+| `#uiux-design` | UI/UX design phase | UIUX |
+| `#verify-design` | Design verification | QA |
+| `#security-review` | Security review | SecA |
+| `#development` | Development phase | DEV |
+| `#devops` | DevOps activities | DevOps |
+| `#testing` | Testing phase | TESTER |
+| `#reporting` | Reporting phase | REPORTER |
+| `#stakeholder-review` | Stakeholder review | STAKEHOLDER |
 
 ### Bug Priority Tags
 | Tag | Severity |
@@ -115,63 +236,230 @@ PM → SA + UIUX + PO → QA + SecA → DEV + DevOps → TESTER → REPORTER →
 | `#fixbug-low` | Cosmetic issues |
 
 ### Special Tags
-| Tag | Description |
-|-----|-------------|
-| `#blocked` | Blocked, needs support |
-| `#hotfix` | Emergency fix |
-| `#rollback` | Needs rollback |
-| `#deployed-staging` | Deployed to staging |
-| `#deployed-production` | Deployed to production |
+| Tag | Description | Used By |
+|-----|-------------|---------|
+| `#searching` | Research/web search activity | All roles |
+| `#blocked` | Blocked, needs support | All roles |
+| `#hotfix` | Emergency fix | DEV, DevOps |
+| `#rollback` | Needs rollback | DevOps |
+| `#deployed-staging` | Deployed to staging | DevOps |
+| `#deployed-production` | Deployed to production | DevOps |
+| `#incident` | Incident response | All roles |
 
 ---
 
 ## 📄 Generated Artifacts
 
-Artifacts are organized by type in the `docs/` folder:
+Artifacts are organized by Sprint and type in the `docs/` folder:
 
-| Folder | Artifacts | Owner |
-|--------|-----------|-------|
-| `docs/plans/` | Project-Plan-v*.md, Product-Backlog-v*.md | PM, PO |
-| `docs/designs/` | Backend-Design-Spec-v*.md, UIUX-Design-Spec-v*.md | SA, UIUX |
-| `docs/reviews/` | Design-Verification-Report-v*.md, Security-Review-Report-v*.md | QA, SecA |
-| `docs/logs/` | Development-Log-v*.md, DevOps-Plan-and-Log-v*.md | DEV, DevOps |
-| `docs/tests/` | Test-Report-v*.md | TESTER |
-| `docs/reports/` | Phase-Report-*.md, Final-Project-Report.md, Final-Approval-Report.md | REPORTER, STAKEHOLDER |
+### Sprint-Based Structure
+```
+docs/
+├── sprints/
+│   ├── sprint-1/
+│   │   ├── plans/          # Project plans, backlogs
+│   │   ├── designs/        # System & UI/UX designs
+│   │   ├── reviews/        # QA & Security reviews
+│   │   ├── logs/           # Development & DevOps logs
+│   │   ├── tests/          # Test reports
+│   │   └── reports/        # Phase reports
+│   └── sprint-2/
+│       └── ...
+└── global/
+    ├── Master-Documentation.md
+    └── reports/
+        ├── Final-Project-Report.md
+        └── Final-Approval-Report.md
+```
 
-> ⚠️ **CRITICAL:** All artifacts are in `docs/`, NEVER in `.gemini/`
+### Artifact Types by Category
+
+| Category | Artifacts | Owner | Location |
+|----------|-----------|-------|----------|
+| **Plans** | Project-Plan-Sprint-[N]-v*.md<br>Product-Backlog-Sprint-[N]-v*.md | PM, PO | `docs/sprints/sprint-[N]/plans/` |
+| **Designs** | System-Design-Spec-Sprint-[N]-v*.md<br>UIUX-Design-Spec-Sprint-[N]-v*.md | SA, UIUX | `docs/sprints/sprint-[N]/designs/` |
+| **Reviews** | Design-Verification-Report-Sprint-[N]-v*.md<br>Security-Review-Report-Sprint-[N]-v*.md | QA, SecA | `docs/sprints/sprint-[N]/reviews/` |
+| **Logs** | Development-Log-Sprint-[N]-v*.md<br>DevOps-Plan-and-Log-Sprint-[N]-v*.md | DEV, DevOps | `docs/sprints/sprint-[N]/logs/` |
+| **Tests** | Test-Report-Sprint-[N]-v*.md | TESTER | `docs/sprints/sprint-[N]/tests/` |
+| **Reports** | Phase-Report-Sprint-[N]-v*.md | REPORTER | `docs/sprints/sprint-[N]/reports/` |
+| **Global** | Master-Documentation.md<br>Final-Project-Report.md<br>Final-Approval-Report.md | REPORTER, STAKEHOLDER | `docs/global/` and `docs/global/reports/` |
+
+> ⚠️ **CRITICAL:** All artifacts are in `docs/`, NEVER in `.gemini/` (reserved for instructions only)
 
 ---
 
 ## 💡 Usage Examples
 
-### Request new design
+### Quick Start with Full-Auto Mode
+
 ```
-@UIUX - Design a gallery page with lightbox effect
+@PM - Build a todo app with:
+- User authentication
+- Task CRUD operations
+- Priority levels
+- Due dates
+Platform: Web (React + Node.js)
+--mode=full-auto
+
+[Review plan]
+"Approved"
+
+[Wait 30-60 minutes - Orchestrator handles everything]
+
+[Only interrupted for critical decisions]
+"⚠️ Decision required: High-priority bug found"
+"1" (to fix)
+
+[Final notification]
+"✅ Project complete - ready for stakeholder review"
 ```
 
-### Request bug fix
+### Starting Different Project Types
+
+#### Web Application
+```
+@PM - I want to build a wedding website with:
+- Couple introduction page
+- Countdown timer
+- Photo gallery
+- RSVP form
+Platform: Web (responsive)
+Tech preference: React/Next.js
+```
+
+#### Mobile App
+```
+@PM - I need a fitness tracking mobile app with:
+- Workout logging
+- Progress charts
+- Goal setting
+- Push notifications
+Platform: iOS and Android
+Tech preference: React Native or Flutter
+```
+
+#### CLI Tool
+```
+@PM - Build a CLI tool for:
+- File conversion (JSON to YAML)
+- Batch processing
+- Configuration validation
+Platform: Cross-platform CLI
+Tech preference: Node.js or Go
+```
+
+#### Desktop Application
+```
+@PM - Create a desktop note-taking app with:
+- Rich text editor
+- Local storage
+- Search functionality
+- Export to PDF
+Platform: Windows and macOS
+Tech preference: Electron
+```
+
+#### API/Backend Service
+```
+@PM - Develop a REST API for:
+- User authentication
+- CRUD operations for tasks
+- Real-time notifications
+- Rate limiting
+Platform: Backend API
+Tech preference: Node.js/Express or Python/FastAPI
+```
+
+### Role-Specific Requests
+
+#### Request system design
+```
+@SA - Design the architecture for a real-time chat system
+```
+
+#### Request UI/UX design
+```
+@UIUX - Design a mobile-first dashboard with dark mode support
+```
+
+#### Request bug fix
 ```
 @DEV - Fix BUG-001: Countdown not displaying correctly on mobile
 ```
 
-### Request security review
+#### Request security review
 ```
-@SECA - Review RSVP form for XSS vulnerabilities
+@SECA - Review authentication flow for OAuth vulnerabilities
 ```
 
-### Check progress
+#### Check progress
 ```
 @REPORTER - Summarize current project progress
 ```
 
-### Request deployment
+#### Request deployment
 ```
-@DEVOPS - Deploy current version to staging
+@DEVOPS - Deploy current version to staging environment
+```
+
+#### Request testing
+```
+@TESTER - Test the new payment integration on iOS and Android
 ```
 
 ---
 
-## ⚠️ Important Rules
+## 🔧 Platform-Specific Workflows
+
+### Web Application Workflow
+1. **@PM** - Define features and target browsers
+2. **@SA** - Design API architecture and data flow
+3. **@UIUX** - Create responsive designs (mobile-first)
+4. **@QA** - Review for cross-browser compatibility
+5. **@SECA** - Check for XSS, CSRF, security headers
+6. **@DEV** - Implement frontend and backend
+7. **@DEVOPS** - Setup CI/CD, deploy to cloud
+8. **@TESTER** - Test across browsers and devices
+
+### Mobile App Workflow
+1. **@PM** - Define features and target platforms (iOS/Android)
+2. **@SA** - Design app architecture and offline support
+3. **@UIUX** - Create platform-specific designs (iOS HIG, Material Design)
+4. **@QA** - Review for platform guidelines compliance
+5. **@SECA** - Check for data storage security, API security
+6. **@DEV** - Implement using native or cross-platform framework
+7. **@DEVOPS** - Setup app store deployment pipeline
+8. **@TESTER** - Test on multiple devices and OS versions
+
+### CLI Tool Workflow
+1. **@PM** - Define commands and use cases
+2. **@SA** - Design command structure and configuration
+3. **@UIUX** - Design CLI UX (prompts, output formatting, help text)
+4. **@QA** - Review for usability and error handling
+5. **@SECA** - Check for command injection, file access security
+6. **@DEV** - Implement CLI logic
+7. **@DEVOPS** - Setup package registry publishing (npm, PyPI, etc.)
+8. **@TESTER** - Test commands and edge cases
+
+### Desktop App Workflow
+1. **@PM** - Define features and target OS
+2. **@SA** - Design app architecture and local storage
+3. **@UIUX** - Create OS-native designs
+4. **@QA** - Review for OS guidelines compliance
+5. **@SECA** - Check for privilege escalation, auto-update security
+6. **@DEV** - Implement using Electron, Qt, or native frameworks
+7. **@DEVOPS** - Setup installer/package creation
+8. **@TESTER** - Test on target operating systems
+
+### API/Backend Workflow
+1. **@PM** - Define API requirements and consumers
+2. **@SA** - Design API endpoints, data models, authentication
+3. **@UIUX** - Design API documentation and developer experience
+4. **@QA** - Review for API design best practices
+5. **@SECA** - Check for authentication, rate limiting, input validation
+6. **@DEV** - Implement API endpoints
+7. **@DEVOPS** - Setup API gateway, monitoring, scaling
+8. **@TESTER** - Test API endpoints, load testing
 
 ### ✅ DO:
 - Start with `@PM` for new projects
@@ -179,11 +467,14 @@ Artifacts are organized by type in the `docs/` folder:
 - Use correct tags to invoke roles
 - Review generated artifacts
 - **Create and save the required report file after completing any task**
+- **Search knowledge base before starting complex work**
+- **Document difficult bugs/features in knowledge base (3+ attempts)**
 
 ### ❌ DON'T:
 - Skip phases (e.g., coding before design approval)
 - Add features not in approved plan
 - Bypass security review
+- Ignore knowledge base when facing similar issues
 
 ---
 
@@ -193,6 +484,94 @@ Artifacts are organized by type in the `docs/` folder:
 2. PM creates new plan version
 3. Wait for re-approval
 4. Continue workflow
+
+---
+
+## 📚 Available Templates
+
+All templates are located in `.gemini/instructions/templates/`:
+
+### Planning Templates
+- `Project-Plan-Template.md` - Initial project planning
+- `Product-Backlog-Template.md` - Feature backlog management
+
+### Design Templates
+- `System-Design-Spec-Template.md` - System/backend architecture (all platforms)
+- `UIUX-Design-Spec-Template.md` - UI/UX design (GUI, CLI, API DX)
+
+### Review Templates
+- `Design-Verification-Report-Template.md` - QA design review
+- `Security-Review-Report-Template.md` - Security assessment
+
+### Development Templates
+- `Development-Log-Template.md` - Development progress tracking
+- `DevOps-Plan-Template.md` - Infrastructure and deployment
+
+### Testing Templates
+- `Test-Report-Template.md` - Testing results and bugs
+
+### Reporting Templates
+- `Phase-Report-Template.md` - Sprint/phase summaries
+- `Master-Documentation-Template.md` - Complete project documentation
+- `Final-Project-Report-Template.md` - Final project summary
+- `Final-Approval-Report-Template.md` - Stakeholder approval
+
+### Reference Templates
+- `definition-of-done.md` - Quality checklist
+- `incident-response.md` - Emergency procedures
+- `Knowledge-Entry-Template.md` - Knowledge base entry
+
+---
+
+## 🧠 Knowledge Base
+
+### What is Knowledge Base?
+A memory system that stores lessons learned, bug patterns, and difficult features for future reference.
+
+### When to Use
+**Create Entry When:**
+- Bug required 3+ attempts to fix
+- Feature was particularly challenging
+- Solution was non-obvious
+- Issue likely to recur
+
+**Search Before:**
+- Starting complex features
+- Fixing unfamiliar bugs
+- Making architecture decisions
+- Dealing with platform-specific issues
+
+### How to Use
+1. **Search:** Check `.gemini/instructions/knowledge-base/index.md`
+2. **Browse:** Navigate by category (bugs, features, architecture, etc.)
+3. **Create:** Use `Knowledge-Entry-Template.md` when needed
+4. **Update:** Keep index.md current
+
+### Structure
+```
+knowledge-base/
+├── index.md              # Searchable index
+├── README.md             # Usage guide
+├── bugs/                 # Bug patterns
+│   ├── critical/
+│   ├── high/
+│   ├── medium/
+│   └── low/
+├── features/             # Complex features
+│   ├── authentication/
+│   ├── performance/
+│   ├── integration/
+│   └── ui-ux/
+├── architecture/         # Architecture decisions
+├── security/             # Security issues
+├── performance/          # Optimizations
+└── platform-specific/    # Platform issues
+    ├── web/
+    ├── mobile/
+    ├── desktop/
+    ├── cli/
+    └── embedded/
+```
 
 ---
 

@@ -7,7 +7,8 @@ KEY DUTIES:
    - Understand business goals, user needs, and expectations
    - Gather detailed requirements and features
    - Clarify scope, priorities, timelines, constraints, and success criteria
-   - Identify target users, platforms, tech stack preferences (if any)
+   - Identify target users, target platforms (web, mobile, desktop, embedded, CLI, API, library, etc.), tech stack preferences (if any)
+   - Understand deployment targets and distribution methods
 
 2. Create a comprehensive project plan based on user input, including:
    - Feature list with priorities (Must-have, Should-have, Could-have)
@@ -72,10 +73,11 @@ OUTPUT FORMAT EXAMPLE (for "Project-Plan-Sprint-1-v1.md"):
 - As a [user], I want [feature] so that [benefit]
 
 ## Target Platforms & Tech Stack
-- Frontend: React / Vue / etc.
-- Backend: Node.js / Python / etc.
-- Database: ...
-- Deployment: Web / Mobile / etc.
+- Platform Type: [Web / Mobile (iOS/Android) / Desktop (Windows/Mac/Linux) / Embedded / CLI / API / Library / Multi-platform]
+- Frontend: [React / Vue / SwiftUI / Flutter / Electron / etc.]
+- Backend: [Node.js / Python / Go / Java / C++ / etc.]
+- Database: [PostgreSQL / MongoDB / SQLite / etc.]
+- Deployment: [Cloud / App Stores / Package Managers / On-premise / etc.]
 
 ## High-Level Timeline
 - Planning: Complete

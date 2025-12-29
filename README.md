@@ -1,132 +1,135 @@
-# TeamLifecycle Instructions
+# Template Instructions
 
-> **Simulating a complete Software Development Lifecycle (SDLC) with specialized AI Agents.**
+> Simulating a complete Software Development Lifecycle (SDLC) with specialized AI Agents.
 
-## 🎯 Overview
+Transform your IDE into a full SDLC team with 12 specialized AI roles, automated workflows, and knowledge management.
 
-This repository contains the instruction sets and templates for **TeamLifecycle**, a project designed to simulate a professional SDLC using Gemini agents acting as specialized roles (Project Manager, Solution Architect, Developer, etc.).
+## ✨ Features
 
-By invoking specific roles using `@tags`, you can trigger a coordinated workflow that takes a project from planning to deployment and reporting.
-
-## ✨ Why Use TeamLifecycle? (Benefits & Optimization)
-
-Adopting this **Agentic SDLC** approach offers significant advantages over standard single-agent coding:
-
-### 1. 🚀 Optimized Process & Quality Assurance
--   **Zero Ambiguity**: By splitting **Planning**, **Design**, and **Implementation**, potential issues are caught *before* code is written.
--   **Strict "Definition of Done"**: Code isn't just "written"; it's **designed**, **reviewed**, **security-checked**, **implemented**, and **tested**.
--   **Self-Correction**: The workflow includes loop-backs (cycle repeats) if a design is rejected or critical bugs are found, ensuring the final output is robust.
-
-### 2. 🧠 Specialized Intelligence (Agentic Roles)
-Instead of one "generic" AI trying to do everything, you get specialized experts:
--   **@SA** thinks purely about *scalability and database structure*.
--   **@UIUX** focuses solely on *user flow and aesthetics*.
--   **@SECA** acts as a dedicated adversary to find *vulnerabilities*.
--   **@DEV** can focus purely on *implementation details* without worrying about high-level architecture.
-
-### 3. 📚 Comprehensive Documentation (Audit Trail)
--   This system **automatically generates** a full project documentation suite (`docs/`):
-    -   Requirement Plans & Backlogs
-    -   Technical & Design Specs
-    -   Security & QA Reports
-    -   Test Results & Change Logs
--   This makes "handover" to human teams or other agents seamless.
-
-### 4. ⚡ Benefit Analysis
-| Feature | Traditional AI Coding | TeamLifecycle (Agentic) |
-| :--- | :--- | :--- |
-| **Context** | Often loses context in long chats | Structured artifacts preserve context per Sprint |
-| **Safety** | May generate insecure code | Dedicated **@SECA** review step |
-| **Architecture** | Often "spaghetti code" | Planned by **@SA** before implementation |
-| **Debugging** | User has to debug | **@TESTER** finds bugs, **@DEV** fixes them |
-
-### 5. 🔄 Sprint-Based Organization
--   Optimized for iterative development.
--   Keeps files organized by Sprint (`docs/sprints/sprint-X/`), preventing clutter and ensuring version control.
-
-## � Installation
-
-### Prerequisites
-- Node.js (version 14 or higher)
-- npm or yarn
-
-### Install the CLI Tool
-```bash
-npm install -g template-instructions
-```
-
-### Create a New Project with Instructions
-```bash
-create-instructions my-sdlc-project
-```
-
-This will create a new folder `my-sdlc-project` containing a `.gemini/instructions` folder with all the instruction files and templates.
-
-### Manual Setup
-Alternatively, clone this repository and copy the `.gemini/instructions/` folder to your desired location.
-
-## 🔧 Setup with Gemini
-
-1. Copy the instruction files to your Gemini workspace:
-   ```bash
-   cp -r .gemini/instructions/ ~/.gemini/instructions/
-   ```
-   (Or manually copy the `.gemini/instructions/` folder to `.gemini/instructions/` in your project.)
-
-2. Ensure your Gemini configuration points to this instructions directory.
-
-## 📁 Repository Structure
-
-```
-.
-├── bin/
-│   └── cli.js                      # CLI tool for scaffolding new projects
-├── .gemini/
-│   └── instructions/
-│       ├── global.md                   # Mandatory global rules and SDLC workflows
-│       ├── usage.md                    # Detailed usage guide and examples
-│       ├── roles/                      # Role-specific instruction definitions
-│       │   ├── pm.md, po.md, sa.md...  # (PM, PO, SA, UIUX, QA, etc.)
-│       └── templates/                  # Standardized document templates
-│           ├── Project-Plan-Template.md
-│           ├── Product-Backlog-Template.md
-│           └── ...
-├── package.json                    # Project metadata and scripts
-└── README.md                       # This file
-```
+- 🤖 **12 AI Roles** - PM, SA, UI/UX, QA, Security, Dev, DevOps, Tester, Reporter, Stakeholder, PO, Orchestrator
+- ⚡ **Slash Commands** - `/pm`, `/dev`, `/auto` in your IDE
+- 🔄 **Auto Workflow** - Full automation or manual control
+- 🧠 **Knowledge Base** - Learn from past challenges
+- 🎨 **IDE Integration** - Cursor, Copilot, Windsurf, Cline, Aider
+- 📚 **16 Templates** - Plans, designs, reports, documentation
+- 🌐 **All Platforms** - Web, Mobile, Desktop, CLI, API, Embedded
 
 ## 🚀 Quick Start
 
-1.  **Start a Project**: Invoke the Project Manager (`@PM`) with your idea.
-    ```text
-    @PM - I want to build a personal finance dashboard.
-    ```
-2.  **Approve Plan**: The PM will create a plan. Review and reply `Approved`.
-3.  **Watch the Magic**: The agents will automatically hand off work through the phases:
-    `PM → SA/UIUX/PO → QA/SecA → DEV/DevOps → TESTER → REPORTER`
+```bash
+# Install
+npm install -g template-instructions
 
-## 📋 Available Roles
+# Create project
+create-instructions create my-project
+cd my-project
 
-| Tag | Role | Responsibility |
-| :--- | :--- | :--- |
-| `@PM` | **Project Manager** | Planning & Coordination |
-| `@PO` | **Product Owner** | Backlog & Prioritization |
-| `@SA` | **Solution Architect** | Backend & API Design |
-| `@UIUX` | **UI/UX Designer** | Interface & UX Design |
-| `@QA` | **QA Analyst** | Design Review & Quality Standards |
-| `@SECA` | **Security Analyst** | Security Audits |
-| `@DEV` | **Developer** | Implementation |
-| `@DEVOPS` | **DevOps Engineer** | CI/CD & Deployment |
-| `@TESTER` | **Tester** | Verification & Validation |
-| `@REPORTER` | **Reporter** | Documentation & Reporting |
-| `@STAKEHOLDER`| **Stakeholder** | Final Approval |
+# Setup IDE
+create-instructions ide cursor
 
-## 📚 Documentation
+# Start building (in IDE)
+/pm Build a todo app with authentication
+```
 
-For detailed instructions, rules, and workflows, please refer to:
+**That's it!** See [QUICK-START.md](QUICK-START.md) for details.
 
-*   **[Usage Guide](.gemini/instructions/usage.md)**: How to use the system, examples, and commands.
-*   **[Global Rules](.gemini/instructions/global.md)**: The strict SDLC protocols and rules every agent follows.
+## 📖 Documentation
 
----
-*Maintained by the TeamLifecycle Project Team.*
+- **Quick Start:** [QUICK-START.md](QUICK-START.md) - Get started in 5 minutes
+- **CLI Examples:** [CLI-EXAMPLES.md](CLI-EXAMPLES.md) - Complete usage guide
+- **Usage Guide:** `.gemini/instructions/usage.md` - Full documentation
+- **IDE Integration:** `.gemini/instructions/ide-integration/README.md`
+
+## 🎯 Use Cases
+
+### Solo Developer
+```bash
+/auto Create a SaaS platform for project management
+# Automated workflow, complete in days
+```
+
+### Team Project
+```bash
+create-instructions ide all
+create-instructions init-kb
+# Shared workflow, consistent quality
+```
+
+### Existing Project
+```bash
+create-instructions install
+create-instructions ide cursor
+# Add SDLC to any project
+```
+
+## 🔧 CLI Commands
+
+```bash
+create-instructions install              # Install in current directory
+create-instructions create <name>        # Create new project
+create-instructions ide <cursor|all>     # Setup IDE integration
+create-instructions init-kb              # Initialize knowledge base
+create-instructions list                 # List templates & roles
+create-instructions --help               # Show help
+```
+
+## 🎨 IDE Slash Commands
+
+After setup, use these in your IDE:
+
+```bash
+/pm              # Project Manager
+/auto            # Full automation
+/sa              # System Analyst
+/uiux            # UI/UX Designer
+/dev             # Developer
+/devops          # DevOps Engineer
+/tester          # Tester
+/kb-search       # Search knowledge base
+```
+
+## 📊 Project Structure
+
+```
+my-project/
+├── .gemini/instructions/
+│   ├── roles/              # 12 AI roles
+│   ├── templates/          # 16 templates
+│   ├── knowledge-base/     # Learning system
+│   └── ide-integration/    # IDE configs
+├── docs/sprints/           # Sprint documentation
+├── .cursorrules            # Cursor config
+└── .github/copilot-instructions.md
+```
+
+## 🌟 Examples
+
+See [CLI-EXAMPLES.md](CLI-EXAMPLES.md) for:
+- Real-world workflows
+- Team collaboration
+- Automation scripts
+- Troubleshooting
+- Pro tips
+
+## 📦 What's Included
+
+- **12 Roles:** Complete SDLC team
+- **16 Templates:** All documentation needs
+- **Knowledge Base:** Learn and improve
+- **IDE Integration:** 5+ IDEs supported
+- **Automation:** Full-auto or manual modes
+- **Multi-platform:** Web, mobile, desktop, CLI, API
+
+## 🤝 Contributing
+
+Contributions welcome! See issues for ideas.
+
+## 📄 License
+
+MIT
+
+## 🔗 Links
+
+- **Repository:** https://github.com/yourusername/template-instructions
+- **Issues:** https://github.com/yourusername/template-instructions/issues
+- **NPM:** https://www.npmjs.com/package/template-instructions

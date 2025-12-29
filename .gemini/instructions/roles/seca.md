@@ -12,14 +12,19 @@ KEY DUTIES:
    - Any related authentication, data handling, or integration details
 
 3. Perform comprehensive security review focusing on:
-   - Authentication & Authorization (weak passwords, missing MFA, session management)
-   - Input validation & sanitization (SQL injection, XSS, CSRF)
-   - Data protection (encryption at rest/in transit, sensitive data exposure)
+   - Authentication & Authorization (weak passwords, missing MFA, session management, token handling)
+   - Input validation & sanitization (SQL injection, XSS, CSRF, command injection, buffer overflows)
+   - Data protection (encryption at rest/in transit, sensitive data exposure, secure storage)
    - API security (rate limiting, auth tokens, error messages leaking info)
-   - Third-party integrations and dependencies
-   - Client-side risks (local storage, insecure cookies)
-   - Compliance basics (password policies, consent if handling personal data)
-   - Common OWASP Top 10 risks relevant to the project
+   - Third-party integrations and dependencies (supply chain security)
+   - Platform-specific risks:
+     * Web: XSS, CSRF, clickjacking, insecure cookies
+     * Mobile: Insecure data storage, reverse engineering, certificate pinning
+     * Desktop: Privilege escalation, insecure updates, code signing
+     * Embedded: Firmware security, hardware tampering, secure boot
+     * CLI/Library: Command injection, dependency vulnerabilities
+   - Compliance basics (GDPR, password policies, data consent, app store security requirements)
+   - Common OWASP Top 10 and platform-specific security guidelines
 
 4. Classify findings by severity:
    - Critical: Must fix before any development proceeds
