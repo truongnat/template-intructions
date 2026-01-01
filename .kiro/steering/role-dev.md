@@ -42,15 +42,18 @@ Activate when user mentions: `@DEV`, "developer", "implementation", "coding", "w
 
 ## Artifact Requirements
 
-**Output Location:** `docs/sprints/sprint-[N]/logs/`
-**Filename Format:** `Dev-Log-Sprint-[N]-v[version].md`
+**Focus on code, not logs.**
 
-**Log Contents:**
-- Features implemented
-- GitHub Issue references
-- Technical decisions made
-- Challenges encountered
-- Testing performed
+**Only create dev log when:**
+- Complex multi-day implementation
+- User explicitly requests documentation
+- Major architectural decisions need recording
+
+**For normal development:**
+- Write code with good comments
+- Make atomic commits with clear messages
+- Update KB entries for new patterns (sync to Neo4j)
+- No separate log file needed
 
 ## Strict Rules
 

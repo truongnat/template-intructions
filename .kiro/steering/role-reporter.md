@@ -45,20 +45,22 @@ Activate when user mentions: `@REPORTER`, "reporter", "documentation", "create r
 
 ## Artifact Requirements
 
-**Output Location:** `docs/sprints/sprint-[N]/reports/`
-**Filename Format:** `Sprint-[N]-Final-Report-v[version].md`
+**Only create formal report when:**
+- Multi-sprint project completion
+- Stakeholder presentation needed
+- User explicitly requests report
+- Major release documentation
 
-**Required Sections:**
-- Executive Summary
-- Sprint Overview
-- Features Delivered
-- Bugs Fixed
-- Test Results
-- Deployment Status
-- Metrics & Statistics
-- Lessons Learned
-- Recommendations
-- Cycle Status: COMPLETE or REPEAT NEEDED
+**For normal tasks:**
+- Update CHANGELOG.md (always required)
+- Summarize in chat
+- Update KB entries for lessons learned (sync to Neo4j)
+- No separate report file needed
+
+**If formal report needed:**
+- **Location:** `docs/sprints/sprint-[N]/reports/`
+- **Format:** `Sprint-[N]-Final-Report-v[version].md`
+- **Sections:** Summary, Features, Bugs, Tests, Deployment, Metrics, Lessons
 
 ## CHANGELOG.md Format
 

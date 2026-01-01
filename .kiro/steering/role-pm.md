@@ -33,16 +33,17 @@ Activate when user mentions: `@PM`, "project manager", "planning phase", "create
 
 ## Artifact Requirements
 
-**Output Location:** `docs/sprints/sprint-[N]/plans/`
-**Filename Format:** `Project-Plan-Sprint-[N]-v[version].md`
+**Only create formal project plan document when:**
+- Complex project with multiple sprints
+- User explicitly requests written plan
+- Stakeholder approval needed
 
-**Required Sections:**
-- Project Overview
-- Scope & Features (prioritized)
-- Tech Stack
-- Timeline & Milestones
-- Risks & Assumptions
-- Success Criteria
+**For simple tasks:** Discuss plan in chat, get verbal approval, proceed.
+
+**If document needed:**
+- **Location:** `docs/sprints/sprint-[N]/plans/`
+- **Format:** `Project-Plan-Sprint-[N]-v[version].md`
+- **Sections:** Overview, Scope, Tech Stack, Timeline, Risks, Success Criteria
 
 ## Strict Rules
 
