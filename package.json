@@ -2,15 +2,46 @@
   "name": "agentic-sdlc",
   "version": "1.0.0",
   "description": "Simulating a complete Software Development Lifecycle (SDLC) with specialized AI Agents.",
-  "main": "index.js",
+  "type": "module",
   "bin": {
     "agentic-sdlc": "./bin/cli.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [
+    "sdlc",
+    "ai",
+    "agent",
+    "automation",
+    "workflow",
+    "cursor",
+    "copilot",
+    "development",
+    "project-management"
+  ],
+  "author": "truongnat",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/truongnat/agentic-sdlc.git"
+  },
+  "bugs": {
+    "url": "https://github.com/truongnat/agentic-sdlc/issues"
+  },
+  "homepage": "https://github.com/truongnat/agentic-sdlc#readme",
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "files": [
+    "bin/",
+    ".agent/",
+    "docs/",
+    "README.md",
+    "CHANGELOG.md",
+    "package.json"
+  ],
   "dependencies": {
     "fs-extra": "^11.2.0"
-  },
-  "type": "module"
+  }
 }
