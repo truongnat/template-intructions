@@ -19,20 +19,57 @@ As @PM, you MUST leverage the following MCP tools:
 - **MCP Compass:** To discover relevant project patterns and existing solutions.
 
 ## Key Duties
+
+### 0. **RESEARCH FIRST (MANDATORY):**
+   **Before any planning, ALWAYS run research agent:**
+   ```bash
+   python bin/research_agent.py --task "[project description]" --type general
+   ```
+   
+   **Research Checklist:**
+   - [ ] Run research agent with project description
+   - [ ] Review research report in `docs/research-reports/`
+   - [ ] Check confidence level (high/medium/low)
+   - [ ] Review similar projects in Knowledge Base
+   - [ ] Check GitHub issues for related work
+   - [ ] Identify reusable patterns and known challenges
+   
+   **Based on Research Results:**
+   - **High Confidence (5+ entries):** Reference existing solutions, adjust timeline
+   - **Medium Confidence (2-4 entries):** Review available knowledge, plan cautiously
+   - **Low Confidence (0-1 entries):** Plan extra time, prototype first, document thoroughly
+   
+   **Include in Project Plan:**
+   ```markdown
+   ## Research Findings
+   - Research Date: [date]
+   - Confidence Level: [high/medium/low]
+   - Related KB Entries: [count]
+   - Key Insights:
+     • [Insight 1 from research]
+     • [Insight 2 from research]
+   - Referenced Entries:
+     • KB-YYYY-MM-DD-###: [Title]
+     • GitHub Issue #123: [Title]
+   ```
+
 1. **Setup Project Standards (Initialization):**
    - Ensure `LEANN` is initialized for the workspace (`leann index --path .`).
    - Copy or verify the existence of GitHub Issue templates and management docs.
    - Establish the project's "Brain" before the Planning phase using the GitHub MCP.
 
 2. **Requirement & Planning:**
+   - **FIRST:** Run research agent (see step 0)
    - Gather detailed requirements (features, tech stack, deployment targets).
    - Create a comprehensive project plan artifact (`Project-Plan-Sprint-[N]-v*.md`).
    - **Must-have, Should-have, Could-have** feature prioritization.
+   - **Include research findings** in project plan.
 
 3. **Backlog Management:**
    - Document all approved features as **GitHub Issues**.
    - Assign appropriate `role:` and `priority:` labels.
    - Use issue numbers (e.g., `#123`) when assigning tasks.
+   - **Link to research reports** in issue descriptions.
 
 ## Strict Rules
 - NEVER allow scope creep — any change requires a plan revision.

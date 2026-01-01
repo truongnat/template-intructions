@@ -5,16 +5,17 @@
       "args": ["mcp-server-github"],
       "env": {
         "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_TOKEN}",
-        "FASTMCP_LOG_LEVEL": "ERROR"
+        "FASTMCP_LOG_LEVEL": "ERROR",
+        "PYTHONIOENCODING": "utf-8"
       },
       "disabled": false,
       "autoApprove": []
     },
-    "brave-search": {
+    "tavily-search": {
       "command": "uvx",
-      "args": ["mcp-server-brave-search"],
+      "args": ["mcp-server-tavily"],
       "env": {
-        "BRAVE_API_KEY": "${BRAVE_API_KEY}",
+        "TAVILY_API_KEY": "${TAVILY_API_KEY}",
         "FASTMCP_LOG_LEVEL": "ERROR"
       },
       "disabled": false,
@@ -29,39 +30,65 @@
       "disabled": false,
       "autoApprove": []
     },
-    "sequential-thinking": {
-      "command": "uvx",
-      "args": ["mcp-server-sequential-thinking"],
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "${WORKSPACE_ROOT}"],
       "env": {
         "FASTMCP_LOG_LEVEL": "ERROR"
       },
       "disabled": false,
       "autoApprove": []
     },
-    "postgres": {
+    "git": {
       "command": "uvx",
-      "args": ["mcp-server-postgres"],
-      "env": {
-        "POSTGRES_CONNECTION_STRING": "${POSTGRES_CONNECTION_STRING}",
-        "FASTMCP_LOG_LEVEL": "ERROR"
-      },
-      "disabled": false,
-      "autoApprove": []
-    },
-    "docker": {
-      "command": "uvx",
-      "args": ["mcp-server-docker"],
+      "args": ["mcp-server-git", "--repository", "${WORKSPACE_ROOT}"],
       "env": {
         "FASTMCP_LOG_LEVEL": "ERROR"
       },
       "disabled": false,
       "autoApprove": []
     },
-    "firecrawl": {
-      "command": "uvx",
-      "args": ["mcp-server-firecrawl"],
+    "puppeteer": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-puppeteer"],
       "env": {
-        "FIRECRAWL_API_KEY": "${FIRECRAWL_API_KEY}",
+        "FASTMCP_LOG_LEVEL": "ERROR"
+      },
+      "disabled": false,
+      "autoApprove": []
+    },
+    "postgresql": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-postgresql", "${POSTGRES_CONNECTION_STRING}"],
+      "env": {
+        "FASTMCP_LOG_LEVEL": "ERROR"
+      },
+      "disabled": false,
+      "autoApprove": []
+    },
+    "sqlite": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-sqlite"],
+      "env": {
+        "FASTMCP_LOG_LEVEL": "ERROR"
+      },
+      "disabled": false,
+      "autoApprove": []
+    },
+
+    "memory": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-memory"],
+      "env": {
+        "FASTMCP_LOG_LEVEL": "ERROR"
+      },
+      "disabled": false,
+      "autoApprove": []
+    },
+    "fetch": {
+      "command": "uvx",
+      "args": ["mcp-server-fetch"],
+      "env": {
         "FASTMCP_LOG_LEVEL": "ERROR"
       },
       "disabled": false,

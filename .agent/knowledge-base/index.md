@@ -1,8 +1,8 @@
 # Knowledge Base Index
 
 **Last Updated:** 2026-01-01  
-**Total Entries:** 1  
-**Auto-Generated:** 1 (100%)
+**Total Entries:** 4  
+**Auto-Generated:** 1 (25%)
 
 ---
 
@@ -11,8 +11,8 @@
 | Category | Count | Critical | High | Medium | Low |
 |----------|-------|----------|------|--------|-----|
 | Bugs | 1 | 0 | 0 | 1 | 0 |
-| Features | 0 | 0 | 0 | 0 | 0 |
-| Architecture | 0 | 0 | 0 | 0 | 0 |
+| Features | 2 | 0 | 0 | 0 | 0 |
+| Architecture | 1 | 0 | 0 | 0 | 0 |
 | Security | 0 | 0 | 0 | 0 | 0 |
 | Performance | 0 | 0 | 0 | 0 | 0 |
 | Platform-Specific | 0 | 0 | 0 | 0 | 0 |
@@ -22,6 +22,8 @@
 ## 🔥 Most Referenced Entries
 
 1. KB-2026-01-01-001 - React Hydration Mismatch (Example)
+2. KB-2026-01-01-002 - Landing Page Design Trends 2026
+3. KB-2026-01-01-003 - Neo4j Graph Database Skills
 
 ---
 
@@ -29,6 +31,9 @@
 
 | ID | Date | Title | Category | Severity | Tags | Auto |
 |----|------|-------|----------|----------|------|------|
+| KB-2026-01-01-004 | 2026-01-01 | Essential UI/UX Design Skills 2026 | Feature | N/A | #uiux-design #design-skills #user-research | ❌ |
+| KB-2026-01-01-003 | 2026-01-01 | Neo4j Graph Database Skills | Architecture | N/A | #neo4j #graph-database #cypher | ❌ |
+| KB-2026-01-01-002 | 2026-01-01 | Landing Page Design Trends 2026 | Feature | N/A | #uiux-design #landing-page #2026-trends | ❌ |
 | KB-2026-01-01-001 | 2026-01-01 | React Hydration Mismatch in Astro | Bug | Medium | #react #astro #hydration | ✅ |
 
 ---
@@ -77,7 +82,8 @@
 ### UI/UX
 | ID | Title | Platform | Technology | Date | Location |
 |----|-------|----------|------------|------|----------|
-| - | - | - | - | - | - |
+| KB-2026-01-01-004 | Essential UI/UX Design Skills 2026 | All | Figma/Design Tools | 2026-01-01 | features/ |
+| KB-2026-01-01-002 | Landing Page Design Trends 2026 | Web | HTML/CSS/JS | 2026-01-01 | features/ |
 
 ---
 
@@ -85,7 +91,7 @@
 
 | ID | Title | Decision | Date | Location |
 |----|-------|----------|------|----------|
-| - | - | - | - | - |
+| KB-2026-01-01-003 | Neo4j Graph Database Skills | Graph DB for connected data | 2026-01-01 | architecture/ |
 
 ---
 
@@ -156,6 +162,7 @@
 - **Kotlin:** [No entries]
 
 ### Database
+- **Neo4j:** KB-2026-01-01-003
 - **PostgreSQL:** [No entries]
 - **MongoDB:** [No entries]
 - **Redis:** [No entries]
@@ -177,8 +184,17 @@
 - `#database` - [0 entries]
 - `#deployment` - [0 entries]
 - `#testing` - [0 entries]
-- `#ui-ux` - [0 entries]
-- `#performance` - [0 entries]
+- `#ui-ux` - [1 entry] - KB-2026-01-01-002
+- `#uiux-design` - [1 entry] - KB-2026-01-01-002
+- `#landing-page` - [1 entry] - KB-2026-01-01-002
+- `#2026-trends` - [1 entry] - KB-2026-01-01-002
+- `#conversion-optimization` - [1 entry] - KB-2026-01-01-002
+- `#neo4j` - [1 entry] - KB-2026-01-01-003
+- `#graph-database` - [1 entry] - KB-2026-01-01-003
+- `#cypher` - [1 entry] - KB-2026-01-01-003
+- `#database` - [1 entry] - KB-2026-01-01-003
+- `#performance` - [1 entry] - KB-2026-01-01-003
+- `#performance-optimization` - [2 entries] - KB-2026-01-01-002, KB-2026-01-01-003
 - `#security` - [0 entries]
 - `#hydration` - [1 entry] - KB-2026-01-01-001
 - `#ssr` - [1 entry] - KB-2026-01-01-001
@@ -202,6 +218,9 @@
 |------|--------|----------|------------|
 | 2026-01-01 | Index created | - | @REPORTER |
 | 2026-01-01 | Added example auto-learned entry | KB-2026-01-01-001 | @DEV |
+| 2026-01-01 | Added landing page design trends research | KB-2026-01-01-002 | @UIUX |
+| 2026-01-01 | Added Neo4j graph database skills guide | KB-2026-01-01-003 | @SA |
+| 2026-01-01 | Added essential UI/UX design skills guide | KB-2026-01-01-004 | @UIUX |
 
 ---
 
