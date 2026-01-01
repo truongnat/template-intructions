@@ -4,7 +4,7 @@
   "description": "Simulating a complete Software Development Lifecycle (SDLC) with specialized AI Agents.",
   "main": "index.js",
   "bin": {
-    "create-instructions": "./bin/cli.js" 
+    "create-instructions": "./bin/cli.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
