@@ -1,8 +1,8 @@
 # Knowledge Base Index
 
 **Last Updated:** 2026-01-01  
-**Total Entries:** 5  
-**Auto-Generated:** 1 (20%)
+**Total Entries:** 6  
+**Auto-Generated:** 1 (17%)
 
 ---
 
@@ -11,7 +11,7 @@
 | Category | Count | Critical | High | Medium | Low |
 |----------|-------|----------|------|--------|-----|
 | Bugs | 1 | 0 | 0 | 1 | 0 |
-| Features | 3 | 0 | 0 | 1 | 0 |
+| Features | 4 | 0 | 0 | 2 | 0 |
 | Architecture | 1 | 0 | 0 | 0 | 0 |
 | Security | 0 | 0 | 0 | 0 | 0 |
 | Performance | 0 | 0 | 0 | 0 | 0 |
@@ -31,6 +31,7 @@
 
 | ID | Date | Title | Category | Severity | Tags | Auto |
 |----|------|-------|----------|----------|------|------|
+| KB-2026-01-01-006 | 2026-01-01 | Award-Winning Landing Page Patterns from Awwwards | Feature | Medium | #ui-design #landing-page #awwwards #3d-effects | ❌ |
 | KB-2026-01-01-005 | 2026-01-01 | Modern AI-Style Landing Page UI Enhancement | Feature | Medium | #ui-design #landing-page #ai-aesthetic #glassmorphism | ❌ |
 | KB-2026-01-01-004 | 2026-01-01 | Essential UI/UX Design Skills 2026 | Feature | N/A | #uiux-design #design-skills #user-research | ❌ |
 | KB-2026-01-01-003 | 2026-01-01 | Neo4j Graph Database Skills | Architecture | N/A | #neo4j #graph-database #cypher | ❌ |

@@ -122,7 +122,12 @@
         "FASTMCP_LOG_LEVEL": "ERROR"
       },
       "disabled": false,
-      "autoApprove": []
+      "autoApprove": [
+        "fetch",
+        "fetch",
+        "fetch",
+        "fetch"
+      ]
     },
     "figma": {
       "url": "https://mcp.figma.com/mcp",
