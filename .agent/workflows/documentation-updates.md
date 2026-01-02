@@ -1,65 +1,65 @@
 ---
-inclusion: manual
-keywords: update documentation, update docs, refresh documentation, update paths, update references, sync, sync docs
+description: Documentation Updates Workflow - Comprehensive guide for updating documentation
 ---
 
-# Documentation Updates - Quick Reference
+# Documentation Updates Workflow
 
-**Full Documentation:** `.agent/workflows/documentation-updates.md`
+## Purpose
+
+This workflow ensures all documentation references are updated consistently across the project when changes are made to paths, structure, naming, or features.
+
+## When to Use
+
+Activate when:
+- "update documentation" or "update docs"
+- "refresh documentation"
+- "update paths" or "update references"
+- "update all to [topic]"
+- "standardize documentation"
+- "sync" or "sync docs" - Execute Neo4j sync immediately
 
 ## Quick Commands
 
-### Sync to Neo4j
-When user types **"sync"** or **"sync docs"**:
+### Sync to Neo4j (Direct Execution)
 
-**CRITICAL: EXECUTE IMMEDIATELY - DO NOT EXPLAIN, DO NOT ASK, JUST RUN:**
+**CRITICAL RULE:** When user types **"sync"** or **"sync docs"**, you MUST immediately execute the command. DO NOT explain, DO NOT list files, DO NOT ask for confirmation.
 
+**Command to execute:**
 ```bash
 python tools/neo4j/sync_skills_to_neo4j.py
 ```
 
-**Rules:**
-- ✅ Execute the command immediately
-- ✅ Show the output/results
-- ✅ Report sync statistics
-- ❌ DO NOT list what will be synced
-- ❌ DO NOT ask for confirmation
-- ❌ DO NOT explain what the command does
-- ❌ DO NOT create summary documents
+**Execution Rules:**
+- ✅ **MUST DO:** Execute the sync script immediately
+- ✅ **MUST DO:** Show the sync results/output
+- ✅ **MUST DO:** Report statistics (KB entries, skills, technologies, categories)
+- ✅ **MUST DO:** Confirm successful completion
+- ❌ **NEVER DO:** List documents that will be synced
+- ❌ **NEVER DO:** Ask for confirmation before executing
+- ❌ **NEVER DO:** Create summary documents
+- ❌ **NEVER DO:** Wait for approval
+- ❌ **NEVER DO:** Explain what the command does first
 
-**After execution:**
-- Show sync results (KB entries, skills, technologies synced)
-- Optionally verify: `python tools/neo4j/query_skills_neo4j.py --all-skills`
+**After Sync:**
+- Optionally verify with: `python tools/neo4j/query_skills_neo4j.py --all-skills`
+- Report the sync statistics to user
+- No additional documentation needed
 
-## Key Principles
-
-1. **Update in `.agent/` first** - Source of truth
-2. **`.kiro/steering/`** - Lightweight references only
-3. **Sync to Neo4j** - After major updates
-4. **Use relative paths** - From project root
-5. **Test all commands** - Verify changes work
-
-## Common Tasks
-
-**Update paths:**
-```bash
-grepSearch --query "old/path" --includePattern "**/*.md"
+**Example correct behavior:**
+```
+User: sync
+Agent: [Immediately executes python tools/neo4j/sync_skills_to_neo4j.py]
+Agent: [Shows output]
+Agent: "Sync completed! Synced X KB entries, Y skills, Z technologies."
 ```
 
-**Update references:**
-- Tool docs: `tools/[tool]/README.md`
-- Workflows: `.agent/workflows/[workflow].md`
-- KB entries: `.agent/knowledge-base/`
-
-**Verify:**
-```bash
-python tools/neo4j/query_skills_neo4j.py --all-skills
+**Example WRONG behavior:**
 ```
-
-## See Full Guide
-
-For complete documentation update procedures, see:
-**`.agent/workflows/documentation-updates.md`**
+User: sync
+Agent: "I'll sync the following files to Neo4j: ..." ❌ WRONG
+Agent: "Would you like me to sync now?" ❌ WRONG
+Agent: "Let me explain what sync does..." ❌ WRONG
+```
 
 ---
 
@@ -93,7 +93,7 @@ grepSearch --query "old-command" --includePattern "**/*.md"
 - `.agent/knowledge-base/` - Knowledge base entries
 - `.agent/workflows/` - Workflow files
 - `.agent/rules/` - Rule files
-- `.kiro/steering/` - Steering files
+- `.kiro/steering/` - Steering files (lightweight references only)
 - `tools/*/README.md` - Tool documentation
 
 ### Phase 3: Update Documentation Files
@@ -129,8 +129,8 @@ grepSearch --query "old-command" --includePattern "**/*.md"
    - Update integration steps
 
 6. **Steering Files** (`.kiro/steering/`)
-   - Update relevant steering guides
-   - Add new steering if needed
+   - Update lightweight references only
+   - Point to `.agent/workflows/` for detailed content
 
 ### Phase 4: Update Cross-References
 
@@ -307,7 +307,7 @@ python tools/neo4j/query_skills_neo4j.py --all-skills
 2. Knowledge base entries referencing the tool
 3. Main README.md
 4. Setup guides
-5. Workflow files
+5. Workflow files in `.agent/workflows/`
 6. Hook configurations
 7. Documentation index
 
@@ -332,7 +332,7 @@ python tools/neo4j/query_skills_neo4j.py --all-skills
 3. Setup guide (`docs/setup/[TOPIC]-SETUP.md`)
 4. Update main README.md
 5. Update documentation index
-6. Add to relevant workflows
+6. Add to relevant workflows in `.agent/workflows/`
 
 ### Scenario 4: Integration Documentation
 
@@ -407,7 +407,7 @@ grepSearch --query "neo4j|Neo4j|NEO4J" --includePattern "**/*.md"
 - `.agent/knowledge-base/architecture/KB-2026-01-01-003-neo4j-graph-database-skills.md`
 - `tools/research/README.md`
 - `docs/PROJECT-DOCUMENTATION-INDEX.md`
-- Any workflow files referencing Neo4j
+- Any workflow files in `.agent/workflows/` referencing Neo4j
 
 **Step 3: Update Each File**
 - Update command paths
@@ -437,6 +437,8 @@ grepSearch --query "neo4j|Neo4j|NEO4J" --includePattern "**/*.md"
 - Provide complete examples
 - **Sync to Neo4j immediately after updates**
 - Verify all changes
+- Keep `.kiro/steering/` files lightweight (references only)
+- Put detailed content in `.agent/workflows/`
 
 ### DON'T ❌
 - Skip cross-references
@@ -446,6 +448,7 @@ grepSearch --query "neo4j|Neo4j|NEO4J" --includePattern "**/*.md"
 - Skip verification
 - Leave incomplete examples
 - **Create unnecessary summary documents**
+- Put detailed workflows in `.kiro/steering/`
 
 ---
 
@@ -466,7 +469,7 @@ grepSearch --query "neo4j|Neo4j|NEO4J" --includePattern "**/*.md"
 - Update version numbers
 
 ### On Major Changes
-- Create update summary document
+- Create update summary document in `docs/`
 - Update all affected documentation
 - Notify team of changes
 - Update documentation index
@@ -474,11 +477,33 @@ grepSearch --query "neo4j|Neo4j|NEO4J" --includePattern "**/*.md"
 
 ---
 
-## Related Steering Files
-- `global-rules.md` - Global documentation rules
-- `knowledge-base.md` - Knowledge base management
-- `git-workflow.md` - Git commit conventions
+## Architecture
+
+### Documentation Structure
+
+```
+.agent/workflows/          # SOURCE OF TRUTH - Detailed workflows
+├── documentation-updates.md
+├── sync.md
+└── ...
+
+.kiro/steering/           # LIGHTWEIGHT REFERENCES ONLY
+├── documentation-updates.md  # Points to .agent/workflows/
+└── ...
+```
+
+**Rule:** `.kiro/steering/` files should be < 50 lines and reference `.agent/workflows/` for details.
+
+---
+
+## Related Files
+
+- **Sync Workflow:** `.agent/workflows/sync.md`
+- **Global Rules:** `.agent/rules/GLOBAL.md`
+- **Knowledge Base:** `.agent/knowledge-base/README.md`
+- **Git Workflow:** `.agent/workflows/git-kb-integration.md`
 
 ---
 
 #documentation #updates #maintenance #standards #best-practices
+

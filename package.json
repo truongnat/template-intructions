@@ -14,7 +14,11 @@
     "kb:stats": "python tools/kb/stats.py",
     "kb:update": "python tools/kb/update-index.py",
     "health": "python tools/validation/health-check.py",
-    "agent": "python tools/run.py"
+    "agent": "python tools/run.py",
+    "agent:list": "python tools/agent/manage.py list",
+    "agent:create": "python tools/agent/manage.py create",
+    "agent:validate": "python tools/agent/manage.py validate",
+    "agent:info": "python tools/agent/manage.py info"
   },
   "keywords": [
     "sdlc",

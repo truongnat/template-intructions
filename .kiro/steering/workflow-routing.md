@@ -43,6 +43,7 @@ Did you just solve a non-obvious problem?
 | "Build complete auth system" | `/specs` | Large, multi-session work |
 | "Site is down!" | `/emergency` | Production critical |
 | "Clean up old sprints" | `/housekeeping` | Maintenance task |
+| "Remove legacy files" | `/cleanup` | Focused cleanup |
 | "Document the fix I just made" | `/compound` | Knowledge capture |
 | "Not sure what to do" | `/route` | Let system decide |
 
@@ -148,6 +149,20 @@ Workflows can be chained for complex scenarios:
 - Emergency situation
 - Mid-sprint
 - No drift detected
+
+### `/cleanup` - Focused File Cleanup
+**Use when:**
+- Legacy files cluttering workspace
+- After major reorganizations
+- Completion documents accumulating
+- Need to move old files to trash
+- Focused cleanup without full housekeeping
+
+**Don't use when:**
+- Files are still in use
+- Unsure what's legacy
+- No trash folder needed
+- Part of larger housekeeping
 
 ## Automatic Workflow Selection
 

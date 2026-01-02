@@ -73,6 +73,7 @@ Use slash commands for compound engineering workflows:
 @DEV /compound - Document the React hydration fix
 @DEV /emergency - P0: Payment gateway down
 @ORCHESTRATOR /housekeeping
+sync - Sync all knowledge to Neo4j (executes immediately)
 ```
 
 ### 3. Auto-Execute Workflow
@@ -105,6 +106,7 @@ Let the system choose the best workflow:
 - **`/compound`** - Capture knowledge after solving problems
 - **`/emergency`** - Critical incident response
 - **`/housekeeping`** - Regular maintenance and cleanup
+- **`/cleanup`** - Focused file cleanup (move legacy to trash)
 - **`/route`** - Intelligent workflow selection
 
 ## Artifact Structure
@@ -216,6 +218,12 @@ Platform: Web (Next.js)
 ```
 **Flow:** Archive → Fix drift → Update index → Verify
 
+### Example 6: Focused Cleanup
+```
+@ORCHESTRATOR /cleanup - Remove legacy completion documents
+```
+**Flow:** Analyze → Categorize → Confirm → Move to trash
+
 ## Workflow Selection Guide
 
 Use the decision tree:
@@ -225,6 +233,7 @@ Small task (< 4h)?       → /cycle
 Complex investigation?   → /explore
 Large project?           → /specs (via @PM)
 Maintenance?             → /housekeeping
+Legacy files cleanup?    → /cleanup
 Document solution?       → /compound
 Unsure?                  → /route
 ```

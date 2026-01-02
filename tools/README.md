@@ -32,6 +32,10 @@ The `tools/` directory contains backend support scripts that:
 
 ```
 tools/
+├── agent/                    # Agent item management (NEW)
+│   ├── manage.py            # Manage roles, workflows, templates, rules
+│   └── README.md
+│
 ├── workflows/                # Workflow automation (from .agent/scripts/)
 │   ├── cycle.py             # Complete task lifecycle
 │   ├── housekeeping.py      # Maintenance and cleanup
@@ -83,7 +87,41 @@ tools/
 
 ## Tools Overview
 
-### 1. Workflow Automation (`workflows/`)
+### 1. Agent Management (`agent/`)
+**Purpose:** Manage items in `.agent/` directory
+
+**Features:**
+- Create new roles, workflows, templates, rules
+- List all items by type
+- Validate item structure
+- Show item information
+- Template-based generation
+
+**Called by:**
+- Manual: Direct script execution
+- npm: Package.json scripts
+- Kiro IDE: Custom commands
+
+**Usage:**
+```bash
+# List all roles
+python tools/agent/manage.py list role
+
+# Create new role
+python tools/agent/manage.py create role architect
+
+# Validate workflow
+python tools/agent/manage.py validate workflow cycle
+
+# Show info
+python tools/agent/manage.py info template project-plan
+```
+
+**Documentation:** [agent/README.md](agent/README.md)
+
+---
+
+### 2. Workflow Automation (`workflows/`)
 **Purpose:** Execute TeamLifecycle workflow commands
 
 **Features:**

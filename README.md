@@ -4,6 +4,64 @@
 
 Transform your IDE into a full SDLC team with 12 specialized AI roles, automated workflows, and knowledge management.
 
+## 🧠 Monorepo Architecture
+
+This is a **monorepo** where the root contains the **Brain** (AI Agent System) and all sub-projects share and use it:
+
+```mermaid
+graph TB
+    subgraph ROOT["🧠 BRAIN (Root)"]
+        AGENT[".agent/<br/>Workflows, KB, Roles"]
+        KIRO[".kiro/<br/>Steering, Settings"]
+        TOOLS["tools/<br/>Neo4j, Research, Utils"]
+        DOCS["docs/<br/>Documentation"]
+    end
+
+    subgraph PROJECTS["📦 PROJECTS"]
+        TODO["todo-app/<br/>Task Management"]
+        LANDING["landing-page/<br/>Astro Site"]
+        FUTURE["[your-project]/<br/>Add More..."]
+    end
+
+    AGENT -.->|"Shared Workflows"| TODO
+    AGENT -.->|"Shared Workflows"| LANDING
+    AGENT -.->|"Shared Workflows"| FUTURE
+    
+    KIRO -.->|"Shared Settings"| TODO
+    KIRO -.->|"Shared Settings"| LANDING
+    KIRO -.->|"Shared Settings"| FUTURE
+    
+    TOOLS -.->|"Shared Tools"| TODO
+    TOOLS -.->|"Shared Tools"| LANDING
+    TOOLS -.->|"Shared Tools"| FUTURE
+
+    style ROOT fill:#e1f5ff,stroke:#01579b,stroke-width:3px
+    style PROJECTS fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
+```
+
+```
+agentic-sdlc/                    # 🧠 BRAIN (Root)
+├── .agent/                      # ✅ Shared AI workflows, KB, roles
+├── .kiro/                       # ✅ Shared Kiro IDE settings  
+├── tools/                       # ✅ Shared tools (Neo4j, research, etc.)
+├── docs/                        # Brain documentation
+│
+└── projects/                    # 📦 SUB-PROJECTS (use Brain)
+    ├── todo-app/               # Todo application
+    ├── landing-page/           # Landing page site
+    └── [add-yours]/            # Your projects here
+```
+
+**Key Concepts:**
+- **Brain (Root):** Contains all AI infrastructure, tools, and knowledge
+- **Projects:** Individual applications that use Brain's capabilities
+- **Shared Everything:** Workflows, KB, tools are shared across all projects
+- **Compound Learning:** Solutions from one project benefit all others
+
+**See:** 
+- [`projects/README.md`](projects/README.md) - How to use Brain in projects
+- [`docs/MONOREPO-ARCHITECTURE.md`](docs/MONOREPO-ARCHITECTURE.md) - Complete architecture guide
+
 ## ✨ Features
 
 - 🤖 **12 AI Roles** - PM, SA, UI/UX, QA, Security, Dev, DevOps, Tester, Reporter, Stakeholder, PO, Orchestrator
@@ -164,58 +222,71 @@ After setup, use these in your IDE:
 ## 📊 Project Structure
 
 ```
-agentic-sdlc/
-├── 📄 Documentation
-│   ├── README.md                    # This file
-│   ├── CHANGELOG.md                 # Version history
-│   ├── PROJECT-STRUCTURE.md         # Detailed structure
-│   └── STANDARDIZATION-SUMMARY.md   # Recent updates
+agentic-sdlc/                           # 🧠 BRAIN (Root)
 │
-├── 🤖 Agent Framework (.agent/)
-│   ├── USAGE.md                     # Usage guide
-│   ├── workflows/                   # 18 workflow definitions
-│   ├── templates/                   # 16 document templates
-│   ├── knowledge-base/              # Learning system
-│   ├── rules/                       # Global rules
-│   └── ide-integration/             # IDE configurations
+├── 📁 .agent/                          # ✅ SHARED - AI Agent System
+│   ├── workflows/                      # 18 workflow definitions
+│   ├── knowledge-base/                 # Compound learning KB
+│   ├── roles/                          # AI role definitions
+│   ├── templates/                      # 16 document templates
+│   ├── rules/                          # Global rules
+│   └── ide-integration/                # IDE configurations
 │
-├── 🔧 Tools & Scripts (tools/)
-│   ├── research/                    # Research agent system
-│   │   ├── research_agent.py        # Core research with KB + Neo4j
-│   │   ├── research_mcp.py          # MCP integration
-│   │   ├── research_mcp_extended.py # Extended MCP with APIs
+├── 📁 .kiro/                           # ✅ SHARED - Kiro IDE Settings
+│   ├── steering/                       # 17 steering files
+│   │   ├── global-rules.md
+│   │   ├── compound-learning.md
+│   │   ├── workflow-enhancements.md
+│   │   └── ...
+│   └── settings/                       # IDE settings
+│       └── mcp.json
+│
+├── 📁 tools/                           # ✅ SHARED - Utilities
+│   ├── neo4j/                          # Knowledge graph
+│   │   ├── sync_skills_to_neo4j.py
+│   │   ├── query_skills_neo4j.py
+│   │   ├── graph_brain.py
 │   │   └── README.md
-│   ├── neo4j/                       # Neo4j knowledge graph
-│   │   ├── sync_skills_to_neo4j.py  # Sync KB to Neo4j
-│   │   ├── query_skills_neo4j.py    # Query skills graph
-│   │   ├── graph_brain.py           # Graph brain logic
-│   │   ├── verify_neo4j.py          # Connection verification
+│   ├── research/                       # Research agent
+│   │   ├── research_agent.py
+│   │   ├── research_mcp.py
 │   │   └── README.md
-│   ├── github/                      # GitHub integration
-│   │   └── sync_github.py           # GitHub sync
-│   └── setup/                       # Setup scripts
-│       ├── setup_research_hooks.sh  # Research hooks
-│       └── standardize_filenames.ps1 # File naming
+│   ├── kb/                             # KB management
+│   ├── github/                         # GitHub integration
+│   ├── setup/                          # Setup scripts
+│   └── README.md
 │
-├── 📚 Documentation (docs/)
+├── 📁 docs/                            # Documentation
 │   ├── PROJECT-DOCUMENTATION-INDEX.md  # Complete index
-│   ├── guides/                      # User guides
-│   ├── architecture/                # Architecture docs
-│   ├── setup/                       # Setup guides
-│   ├── sprints/                     # Sprint artifacts
-│   └── research-reports/            # Generated reports
+│   ├── MONOREPO-ARCHITECTURE.md        # Architecture guide
+│   ├── guides/                         # User guides
+│   ├── architecture/                   # Architecture docs
+│   ├── setup/                          # Setup guides
+│   └── sprints/                        # Sprint artifacts
 │
-├── ⚙️ Configuration
-│   ├── .kiro/steering/              # 17 steering files
-│   ├── .github/                     # GitHub config
-│   └── .cursorrules                 # Cursor IDE config
+├── 📁 projects/                        # 📦 SUB-PROJECTS
+│   ├── README.md                       # Monorepo guide
+│   ├── todo-app/                       # Todo application
+│   │   ├── frontend/
+│   │   ├── backend/
+│   │   └── README.md
+│   └── landing-page/                   # Landing page site
+│       ├── src/
+│       ├── public/
+│       └── README.md
 │
-└── 💻 CLI & Landing Page
-    ├── bin/                         # CLI commands
-    └── landing-page/                # Marketing site
+├── 📁 bin/                             # Legacy CLI (deprecated)
+├── 📁 trash/                           # Archived files
+│
+├── 📄 README.md                        # This file
+├── 📄 PROJECT-STRUCTURE.md             # Detailed structure
+├── 📄 package.json                     # Root package.json
+└── 📄 .gitignore
 ```
 
-**See [PROJECT-DOCUMENTATION-INDEX.md](docs/PROJECT-DOCUMENTATION-INDEX.md) for complete file listing.**
+**See:** 
+- [PROJECT-DOCUMENTATION-INDEX.md](docs/PROJECT-DOCUMENTATION-INDEX.md) - Complete file listing
+- [MONOREPO-ARCHITECTURE.md](docs/MONOREPO-ARCHITECTURE.md) - Architecture details
 
 ## 🌟 Examples
 

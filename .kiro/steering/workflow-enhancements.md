@@ -98,6 +98,16 @@ Inspired by compound engineering principles, these workflows create a self-impro
 @ORCHESTRATOR /housekeeping
 ```
 
+### `/cleanup` - Focused File Cleanup
+**When:** Legacy files cluttering workspace
+**Flow:** Analyze → Categorize → Confirm → Move to trash
+**Output:** Files moved to trash folder
+
+```
+@ORCHESTRATOR /cleanup
+@DEV /cleanup - Remove old completion documents
+```
+
 ### `/onboard` - Session Context Establishment
 **When:** Start of new session
 **Flow:** Load context → Resume state → Prime agent

@@ -118,7 +118,13 @@ done
 - tags
 
 ### 5. Clean Up Temporary Files
-**Remove:**
+
+**Use `/cleanup` workflow for comprehensive cleanup:**
+```
+@ORCHESTRATOR /cleanup
+```
+
+**Quick Cleanup (Manual):**
 - [ ] `.DS_Store` files
 - [ ] Temporary test files
 - [ ] Old log files
@@ -130,6 +136,8 @@ done
 - All sprint artifacts
 - All templates
 - All workflows
+
+**See:** `.agent/workflows/cleanup.md` for full cleanup workflow
 
 ### 6. Update Metrics Dashboard
 **Generate Current Metrics:**
