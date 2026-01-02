@@ -170,6 +170,20 @@ interface Monitor {
 }
 ```
 
+### 6. Communication Layer
+**Responsibility:** Persist role-to-role context and "thoughts" via Chat System.
+
+```typescript
+interface ChatSystem {
+  channel: string; // e.g., "general"
+  thread: string;  // e.g., "Feature-X"
+  
+  sendMessage(role: Role, content: string): void;
+  getHistory(limit: number): Message[];
+}
+```
+```
+
 ## Data Flow
 
 ```mermaid

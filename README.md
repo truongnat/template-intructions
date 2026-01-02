@@ -114,6 +114,7 @@ agentic-sdlc ide cursor
 - **[Neo4j Tools](tools/neo4j/README.md)** - Knowledge graph database for skills and relationships
 - **[GitHub Tools](tools/github/)** - GitHub integration and synchronization
 - **[Setup Scripts](tools/setup/)** - Installation and configuration scripts
+- **[Role Communication System](docs/guides/ROLE-COMMUNICATION-SYSTEM.md)** - Internal chat system for agent roles
 
 ## 🎯 Use Cases
 

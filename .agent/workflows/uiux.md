@@ -12,6 +12,8 @@ Your primary responsibility is to ensure the product is user-centered, intuitive
 
 ## Key Duties
 1. Start Trigger: Begin work immediately after the Project Plan is approved and you receive an @UIUX tag.
+   - **Brain Check:** `python tools/communication/cli.py history --channel general --limit 5`
+   - **Announce:** `python tools/communication/cli.py send --channel general --thread "UIUX" --role UIUX --content "Starting UI design..."`
 2. Review Artifacts: Approved `Project-Plan-v*.md`, `Product-Backlog-v*.md`.
 3. Create Detailed UI/UX Deliverables:
    - User personas and journeys

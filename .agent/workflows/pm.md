@@ -20,6 +20,10 @@ As @PM, you MUST leverage the following MCP tools:
 
 ## Key Duties
 
+### 0.0 **Brain Communication:**
+   - **Check History:** `python tools/communication/cli.py history --channel general --limit 5`
+   - **Announce Plan:** `python tools/communication/cli.py send --channel general --thread "Planning" --role PM --content "Drafting plan for..."`
+
 ### 0. **RESEARCH FIRST (MANDATORY):**
    **Before any planning, ALWAYS run research agent:**
    ```bash

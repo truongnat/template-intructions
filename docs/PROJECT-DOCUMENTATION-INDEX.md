@@ -238,6 +238,7 @@ All guide files use UPPERCASE naming.
 | `MCP-GUIDE.md` | MCP guide | ✅ Current |
 | `MCP-QUICK-REFERENCE.md` | MCP quick reference | ✅ Current |
 | `MCP-SETUP.md` | MCP setup | ✅ Current |
+| `ROLE-COMMUNICATION-SYSTEM.md` | Role chat system guide | ✅ Current |
 
 #### Reports
 **Location:** `docs/reports/`

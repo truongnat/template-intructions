@@ -1,7 +1,7 @@
 # Knowledge Base Index
 
 **Last Updated:** 2026-01-02  
-**Total Entries:** 3
+**Total Entries:** 5
 
 This index provides a searchable overview of all knowledge base entries.
 
@@ -9,7 +9,7 @@ This index provides a searchable overview of all knowledge base entries.
 
 ## 📊 Quick Stats
 
-- **Total Entries:** 3
+- **Total Entries:** 5
 - **Categories:** 1
 - **Priorities:** 2
 
@@ -18,9 +18,19 @@ This index provides a searchable overview of all knowledge base entries.
 ## 📁 By Category
 
 
-### ✨ Feature (3 entries)
+### ✨ Feature (5 entries)
 
-- 🔴 **Figma Landing Page Design & Development Workflow**
+- 🔴 **Figma MCP Integration for @UIUX**
+  - File: `features/figma-mcp-uiux-guide.md`
+  - Date: 2026-01-02 | Priority: high
+  - Tags: figma, mcp, uiux, design, code-generation
+
+- � **Foigma MCP Integration for @SA**
+  - File: `features/figma-mcp-sa-guide.md`
+  - Date: 2026-01-02 | Priority: high
+  - Tags: figma, mcp, sa, architecture, api-design
+
+- � **Figrma Landing Page Design & Development Workflow**
   - File: `features/figma-landing-page-workflow.md`
   - Date: 2026-01-02 | Priority: high
   - Tags: figma, landing-page, design-to-code, tailwind, astro, mcp, ai-workflow
@@ -40,8 +50,12 @@ This index provides a searchable overview of all knowledge base entries.
 
 ## ⚠️ By Priority
 
-### 🔴 High (1 entry)
+### 🔴 High (3 entries)
 
+- **Figma MCP Integration for @UIUX** (feature)
+  - `features/figma-mcp-uiux-guide.md`
+- **Figma MCP Integration for @SA** (feature)
+  - `features/figma-mcp-sa-guide.md`
 - **Figma Landing Page Design & Development Workflow** (feature)
   - `features/figma-landing-page-workflow.md`
 

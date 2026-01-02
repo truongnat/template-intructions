@@ -1,3 +1,5 @@
+import { motion, AnimatePresence } from 'framer-motion';
+import { Loader2, ClipboardList } from 'lucide-react';
 import { useTodoStore } from '../store/todoStore';
 import TodoItem from './TodoItem';
 import { Todo } from '../types';
@@ -11,34 +13,43 @@ export default function TodoList({ onEdit }: Props) {
 
   if (isLoading) {
     return (
-      <div className="text-center py-12">
-        <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
-        <p className="mt-2 text-gray-600">Loading todos...</p>
+      <div className="flex flex-col items-center justify-center py-20 text-slate-500">
+        <Loader2 className="animate-spin mb-4" size={32} />
+        <p className="text-lg">Loading your workflow...</p>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="bg-red-50 text-red-600 p-4 rounded-lg">
-        Error: {error}
+      <div className="bg-red-500/10 border border-red-500/20 text-red-500 p-4 rounded-2xl backdrop-blur-md">
+        <p className="font-medium text-center">Error: {error}</p>
       </div>
     );
   }
 
   if (todos.length === 0) {
     return (
-      <div className="text-center py-12">
-        <p className="text-gray-500 text-lg">No todos yet. Create your first one!</p>
-      </div>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="flex flex-col items-center justify-center py-20 text-slate-600 glass-card"
+      >
+        <ClipboardList size={48} className="mb-4 opacity-20" />
+        <p className="text-xl font-medium text-slate-400">No tasks on the horizon</p>
+        <p className="text-sm">Create your first todo to get started.</p>
+      </motion.div>
     );
   }
 
   return (
-    <div className="space-y-3">
-      {todos.map((todo) => (
-        <TodoItem key={todo.id} todo={todo} onEdit={onEdit} />
-      ))}
+    <div className="grid gap-4">
+      <AnimatePresence mode="popLayout" initial={false}>
+        {todos.map((todo) => (
+          <TodoItem key={todo.id} todo={todo} onEdit={onEdit} />
+        ))}
+      </AnimatePresence>
     </div>
   );
 }
+

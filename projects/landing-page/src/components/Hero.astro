@@ -1,8 +1,9 @@
 ---
+import TerminalDemo from './TerminalDemo.astro';
 ---
 
 <section 
-  class="relative min-h-screen flex items-center justify-center overflow-hidden"
+  class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 flex items-center justify-center overflow-hidden"
   aria-labelledby="hero-title"
   role="banner"
 >
@@ -129,56 +130,14 @@
         </a>
       </nav>
       
-      <!-- Premium AI-style code block with enhanced glassmorphism -->
-      <div class="relative max-w-3xl mx-auto animate-slide-up" style="animation-delay: 0.6s;" role="region" aria-label="Installation code example">
-        <!-- Multi-layer glow effect -->
+      <!-- Premium AI-style code block with interactive terminal -->
+      <div class="relative max-w-3xl mx-auto animate-slide-up" style="animation-delay: 0.6s;" role="region" aria-label="Interactive installation demo">
+        <!-- Glow effect -->
         <div class="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 rounded-3xl blur-3xl"></div>
         <div class="absolute inset-0 bg-gradient-to-r from-blue-400/10 to-purple-400/10 rounded-3xl blur-xl"></div>
         
-        <!-- Main container with enhanced glass effect -->
-        <div class="relative backdrop-blur-2xl bg-gradient-to-br from-slate-900/95 to-slate-800/95 border border-white/10 rounded-3xl overflow-hidden shadow-glass-lg">
-          <!-- Top bar with macOS-style controls -->
-          <div class="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-gradient-to-r from-white/[0.08] to-white/[0.03]">
-            <div class="flex items-center gap-4">
-              <div class="flex gap-2" aria-hidden="true">
-                <div class="w-3 h-3 rounded-full bg-red-500/90 hover:bg-red-400 transition-colors cursor-pointer"></div>
-                <div class="w-3 h-3 rounded-full bg-yellow-500/90 hover:bg-yellow-400 transition-colors cursor-pointer"></div>
-                <div class="w-3 h-3 rounded-full bg-green-500/90 hover:bg-green-400 transition-colors cursor-pointer"></div>
-              </div>
-              <span class="text-sm text-gray-400 font-mono flex items-center gap-2">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                </svg>
-                terminal
-              </span>
-            </div>
-            <button 
-              class="group flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-300 hover:text-white bg-white/5 hover:bg-white/10 rounded-lg transition-all duration-300 hover:scale-105"
-              onclick="navigator.clipboard.writeText('npm install -g agentic-sdlc\\nagentic-sdlc create my-app'); this.innerHTML = '<svg class=\\'w-4 h-4\\' fill=\\'none\\' stroke=\\'currentColor\\' viewBox=\\'0 0 24 24\\'><path stroke-linecap=\\'round\\' stroke-linejoin=\\'round\\' stroke-width=\\'2\\' d=\\'M5 13l4 4L19 7\\'></path></svg> Copied!'; setTimeout(() => this.innerHTML = '<svg class=\\'w-4 h-4\\' fill=\\'none\\' stroke=\\'currentColor\\' viewBox=\\'0 0 24 24\\'><path stroke-linecap=\\'round\\' stroke-linejoin=\\'round\\' stroke-width=\\'2\\' d=\\'M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z\\'></path></svg> Copy', 2000)"
-              aria-label="Copy installation command to clipboard"
-            >
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
-              </svg>
-              Copy
-            </button>
-          </div>
-          
-          <!-- Code content with syntax highlighting -->
-          <div class="p-8 bg-gradient-to-br from-slate-900/50 to-slate-800/50">
-            <pre class="text-left font-mono text-sm leading-relaxed"><code><span class="text-gray-500"># Install globally</span>
-<span class="text-blue-400">npm</span> <span class="text-purple-400">install</span> <span class="text-pink-400">-g</span> <span class="text-white">agentic-sdlc</span>
-
-<span class="text-gray-500"># Create your project</span>
-<span class="text-blue-400">agentic-sdlc</span> <span class="text-purple-400">create</span> <span class="text-white">my-app</span>
-
-<span class="text-gray-500"># Start building with AI</span>
-<span class="text-green-400">/pm</span> <span class="text-white">Build a todo app with auth</span></code></pre>
-          </div>
-          
-          <!-- Bottom accent bar -->
-          <div class="h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"></div>
-        </div>
+        <!-- Terminal Component -->
+        <TerminalDemo />
       </div>
     </div>
   </div>

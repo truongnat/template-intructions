@@ -19,6 +19,10 @@ As @DEV, you MUST leverage the following MCP tools:
 
 ## Key Duties
 
+### 0.0 **Brain Communication (Pre-Work):**
+   - **Check History:** `python tools/communication/cli.py history --channel general --limit 5`
+   - **Announce Start:** `python tools/communication/cli.py send --channel general --thread "Development" --role DEV --content "Starting implementation of [feature]..."`
+
 ### 0. **RESEARCH BEFORE IMPLEMENTATION (MANDATORY):**
    **Before coding any feature, ALWAYS run research agent:**
    ```bash

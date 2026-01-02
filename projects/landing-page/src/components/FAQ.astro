@@ -101,46 +101,40 @@ const faqs = [
   </div>
 </section>
 
-<script>
-  // FAQ accordion functionality with improved keyboard navigation
-  const faqItems = document.querySelectorAll('.faq-item');
-  
-  faqItems.forEach((item) => {
-    const question = item.querySelector('.faq-question');
-    const answer = item.querySelector('.faq-answer');
-    const icon = item.querySelector('.faq-icon');
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const questions = document.querySelectorAll('.faq-question');
     
-    if (question && answer && icon) {
+    questions.forEach((question) => {
       question.addEventListener('click', () => {
-        const isOpen = question.getAttribute('aria-expanded') === 'true';
+        const answer = question.nextElementSibling;
+        const icon = question.querySelector('.faq-icon');
+        const isExpanded = question.getAttribute('aria-expanded') === 'true';
         
         // Close all other items
-        faqItems.forEach((otherItem) => {
-          if (otherItem !== item) {
-            const otherQuestion = otherItem.querySelector('.faq-question');
-            const otherAnswer = otherItem.querySelector('.faq-answer');
-            const otherIcon = otherItem.querySelector('.faq-icon');
+        questions.forEach((otherQuestion) => {
+          if (otherQuestion !== question) {
+            const otherAnswer = otherQuestion.nextElementSibling;
+            const otherIcon = otherQuestion.querySelector('.faq-icon');
             
-            if (otherQuestion && otherAnswer && otherIcon) {
-              otherQuestion.setAttribute('aria-expanded', 'false');
-              otherAnswer.style.maxHeight = '0';
-              otherIcon.style.transform = 'rotate(0deg)';
-            }
+            otherQuestion.setAttribute('aria-expanded', 'false');
+            if (otherAnswer) otherAnswer.style.maxHeight = '0';
+            if (otherIcon) otherIcon.style.transform = 'rotate(0deg)';
           }
         });
         
         // Toggle current item
-        if (isOpen) {
+        if (isExpanded) {
           question.setAttribute('aria-expanded', 'false');
-          answer.style.maxHeight = '0';
-          icon.style.transform = 'rotate(0deg)';
+          if (answer) answer.style.maxHeight = '0';
+          if (icon) icon.style.transform = 'rotate(0deg)';
         } else {
           question.setAttribute('aria-expanded', 'true');
-          answer.style.maxHeight = answer.scrollHeight + 'px';
-          icon.style.transform = 'rotate(180deg)';
+          if (answer) answer.style.maxHeight = answer.scrollHeight + 'px';
+          if (icon) icon.style.transform = 'rotate(180deg)';
         }
       });
-    }
+    });
   });
   
   // Enhanced keyboard navigation (Arrow keys)

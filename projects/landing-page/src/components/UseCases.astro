@@ -52,7 +52,7 @@ const useCases = [
           <!-- Card container with flip effect -->
           <div class="relative h-full preserve-3d group-hover:rotate-y-180 transition-all duration-700">
             <!-- Front of card -->
-            <div class="glass-card h-full backface-hidden">
+            <div class="glass-card h-full backface-hidden bg-slate-900/95 p-8 border border-white/10">
               <!-- Icon with gradient -->
               <div class={`w-16 h-16 rounded-xl bg-gradient-to-br ${useCase.gradient} flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform duration-300`}>
                 {useCase.icon}
@@ -77,7 +77,7 @@ const useCases = [
             
             <!-- Back of card (code) -->
             <div class="absolute inset-0 backface-hidden rotate-y-180">
-              <div class="glass-card h-full flex flex-col">
+              <div class="glass-card h-full flex flex-col bg-slate-900/95 p-8 border border-white/10">
                 <div class="flex items-center justify-between mb-4">
                   <span class="text-sm font-medium text-blue-400">Example Code</span>
                   <button 

@@ -15,6 +15,10 @@ As @TESTER, you MUST leverage:
 
 ## Key Duties
 
+### 0.0 **Brain Communication:**
+   - **Check History:** `python tools/communication/cli.py history --channel general --limit 5`
+   - **Announce:** `python tools/communication/cli.py send --channel general --thread "Testing" --role TESTER --content "Starting tests..."`
+
 ### 0. **RESEARCH BEFORE TESTING (MANDATORY):**
    **Before testing or fixing bugs, ALWAYS run research agent:**
    ```bash

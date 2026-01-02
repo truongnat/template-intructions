@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { motion } from 'framer-motion';
+import { X, Sparkles, AlertCircle } from 'lucide-react';
 import { useTodoStore } from '../store/todoStore';
 
 interface Props {
@@ -9,92 +11,120 @@ export default function AddTodoModal({ onClose }: Props) {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [error, setError] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const { createTodo } = useTodoStore();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (isSubmitting) return;
+
     setError('');
 
     if (!title.trim()) {
-      setError('Title is required');
+      setError('A title is required to focus your task.');
       return;
     }
 
     try {
+      setIsSubmitting(true);
       await createTodo(title, description || undefined);
       onClose();
     } catch (err: any) {
       setError(err.message);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-      <div className="bg-white rounded-xl shadow-xl max-w-md w-full p-6">
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="text-xl font-bold text-gray-900">Add New Todo</h2>
-          <button
-            onClick={onClose}
-            className="text-gray-400 hover:text-gray-600 text-2xl"
-          >
-            ×
-          </button>
-        </div>
+    <div className="modal-overlay">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9, y: 20 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.9, y: 20 }}
+        className="glass-card max-w-md w-full !p-0 overflow-hidden relative"
+      >
+        {/* Glow Header */}
+        <div className="h-1.5 w-full bg-gradient-to-r from-sky-500 via-purple-500 to-sky-500 animate-gradient-x" />
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          {error && (
-            <div className="bg-red-50 text-red-600 p-3 rounded text-sm">
-              {error}
+        <div className="p-8">
+          <div className="flex items-center justify-between mb-8">
+            <div className="flex items-center gap-3">
+              <div className="p-2 bg-sky-500/20 text-sky-400 rounded-lg">
+                <Sparkles size={20} />
+              </div>
+              <h2 className="text-xl font-bold text-white">New Objective</h2>
             </div>
-          )}
-
-          <div>
-            <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-1">
-              Title *
-            </label>
-            <input
-              id="title"
-              type="text"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary focus:border-primary"
-              placeholder="Buy groceries"
-              maxLength={200}
-            />
-          </div>
-
-          <div>
-            <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-1">
-              Description (optional)
-            </label>
-            <textarea
-              id="description"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary focus:border-primary"
-              placeholder="Milk, eggs, bread..."
-              rows={3}
-              maxLength={1000}
-            />
-          </div>
-
-          <div className="flex gap-3 justify-end">
             <button
-              type="button"
               onClick={onClose}
-              className="px-4 py-2 text-gray-700 hover:text-gray-900"
+              className="p-1.5 text-slate-500 hover:text-white hover:bg-white/5 rounded-lg transition-all"
             >
-              Cancel
-            </button>
-            <button
-              type="submit"
-              className="px-4 py-2 bg-primary text-white rounded-md hover:bg-blue-600"
-            >
-              Save
+              <X size={20} />
             </button>
           </div>
-        </form>
-      </div>
+
+          <form onSubmit={handleSubmit} className="space-y-6">
+            {error && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                className="bg-rose-500/10 border border-rose-500/20 text-rose-500 p-3 rounded-xl text-sm flex items-center gap-2"
+              >
+                <AlertCircle size={16} />
+                {error}
+              </motion.div>
+            )}
+
+            <div>
+              <label htmlFor="title" className="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2 ml-1">
+                Objective Title
+              </label>
+              <input
+                id="title"
+                type="text"
+                autoFocus
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                className="input-premium w-full text-lg"
+                placeholder="What needs to be done?"
+                maxLength={200}
+              />
+            </div>
+
+            <div>
+              <label htmlFor="description" className="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2 ml-1">
+                Context (Optional)
+              </label>
+              <textarea
+                id="description"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                className="input-premium w-full !py-3 min-h-[100px] resize-none"
+                placeholder="Add details, links, or notes..."
+                maxLength={1000}
+              />
+            </div>
+
+            <div className="flex gap-4 pt-4">
+              <button
+                type="button"
+                onClick={onClose}
+                className="flex-1 px-4 py-3 text-slate-400 font-medium hover:text-white transition-colors"
+              >
+                Discard
+              </button>
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="flex-[2] btn-premium"
+              >
+                {isSubmitting ? 'Syncing...' : 'Establish Objective'}
+              </button>
+            </div>
+          </form>
+        </div>
+      </motion.div>
     </div>
   );
 }
+

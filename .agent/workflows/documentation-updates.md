@@ -89,7 +89,8 @@ grepSearch --query "old-command" --includePattern "**/*.md"
 
 **Key locations to check:**
 - `README.md` - Main project documentation
-- `docs/` - All documentation files
+- `**/docs/` - Lean documentation inside each sub-project/folder (Mono-Repo standard)
+- `docs/` - Global documentation files
 - `.agent/knowledge-base/` - Knowledge base entries
 - `.agent/workflows/` - Workflow files
 - `.agent/rules/` - Rule files
@@ -265,12 +266,20 @@ python tools/neo4j/query_skills_neo4j.py --all-skills
 **Always use relative paths from project root:**
 ```markdown
 ✅ GOOD: `tools/research/research_agent.py`
+✅ GOOD: `[project]/docs/ARCHITECTURE.md` (Lean mono-repo path)
 ✅ GOOD: `.agent/knowledge-base/architecture/`
 ✅ GOOD: `docs/setup/RESEARCH-AGENT-SETUP.md`
 
 ❌ BAD: `/absolute/path/to/file`
 ❌ BAD: `../../../relative/path`
 ```
+
+### Mono-Repo "Lean Docs" Standard
+
+**Rule:** In mono-repos, place documentation as close to the code as possible.
+- Each sub-project/folder MUST have its own `docs/` folder.
+- Use `leann` to index these folders specifically for the Project Brain.
+- Global docs (architecture overview, cross-project guides) remain in the root `docs/` folder.
 
 ### Command Examples
 
@@ -482,14 +491,16 @@ grepSearch --query "neo4j|Neo4j|NEO4J" --includePattern "**/*.md"
 ### Documentation Structure
 
 ```
-.agent/workflows/          # SOURCE OF TRUTH - Detailed workflows
-├── documentation-updates.md
-├── sync.md
-└── ...
-
-.kiro/steering/           # LIGHTWEIGHT REFERENCES ONLY
-├── documentation-updates.md  # Points to .agent/workflows/
-└── ...
+. (Project Root)
+├── docs/                 # GLOBAL SOURCE OF TRUTH (Cross-project)
+├── [project-a]/
+│   └── docs/             # LEAN DOCS (Project-specific)
+├── [project-b]/
+│   └── docs/             # LEAN DOCS (Project-specific)
+├── .agent/
+│   ├── workflows/        # PROCESS SOURCE OF TRUTH
+│   └── knowledge-base/   # SEMANTIC SOURCE OF TRUTH
+└── .kiro/steering/       # LIGHTWEIGHT REFERENCES ONLY
 ```
 
 **Rule:** `.kiro/steering/` files should be < 50 lines and reference `.agent/workflows/` for details.

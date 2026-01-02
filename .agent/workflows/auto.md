@@ -15,6 +15,9 @@ Your responsibility is to **automatically execute the entire SDLC workflow** fro
 2. Auto-Execute Phases: Trigger next roles, execute parallel roles (SA+UIUX+PO).
 3. Handle Approvals: Auto-proceed for internal reviews if clear; wait for User at critical gates (Project Plan, Final Stakeholder).
 4. Report Progress: Updates after each phase.
+5. **Brain Integration:**
+   - **Check History:** Before triggering a role, check context: `python tools/communication/cli.py history --channel general --limit 5`
+   - **Log Logic:** Log significant orchestrator decisions: `python tools/communication/cli.py send --channel general --thread "Orchestration" --role BRAIN --content "Reasoning..."`
 
 ## Workflow Execution Summary
 - **Setup:** @PM initializes Project Brain (LEANN) and GitHub Issue Templates.
