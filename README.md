@@ -2,7 +2,7 @@
 
 > Simulating a complete Software Development Lifecycle (SDLC) with specialized AI Agents.
 
-Transform your IDE into a full SDLC team with 12 specialized AI roles, automated workflows, and knowledge management.
+Transform your IDE into a full SDLC team with 13 specialized AI roles, automated workflows, and knowledge management.
 
 ## 🧠 Monorepo Architecture
 
@@ -64,12 +64,12 @@ agentic-sdlc/                    # 🧠 BRAIN (Root)
 
 ## ✨ Features
 
-- 🤖 **12 AI Roles** - PM, SA, UI/UX, QA, Security, Dev, DevOps, Tester, Reporter, Stakeholder, PO, Orchestrator
+- �� **13+ AI Roles** - PM, SA, UI/UX, QA, Security, Dev, DevOps, Tester, Reporter, Stakeholder, PO, Orchestrator
 - ⚡ **Slash Commands** - `/pm`, `/dev`, `/auto` in your IDE
 - 🔄 **Auto Workflow** - Full automation or manual control
 - 🧠 **Knowledge Base** - Learn from past challenges
 - 🎨 **IDE Integration** - Cursor, Copilot, Windsurf, Cline, Aider
-- 📚 **16 Templates** - Plans, designs, reports, documentation
+- 📚 **17 Templates** - Plans, designs, reports, documentation
 - 🌐 **All Platforms** - Web, Mobile, Desktop, CLI, API, Embedded
 
 ## 🚀 Quick Start
@@ -226,7 +226,7 @@ After setup, use these in your IDE:
 agentic-sdlc/                           # 🧠 BRAIN (Root)
 │
 ├── 📁 .agent/                          # ✅ SHARED - AI Agent System
-│   ├── workflows/                      # 18 workflow definitions
+│   ├── workflows/                      # 32 workflow definitions
 │   ├── knowledge-base/                 # Compound learning KB
 │   ├── roles/                          # AI role definitions
 │   ├── templates/                      # 16 document templates
@@ -302,7 +302,7 @@ See [CLI-EXAMPLES.md](docs/guides/CLI-EXAMPLES.md) for:
 ## 📦 What's Included
 
 - **12 Roles:** Complete SDLC team
-- **16 Templates:** All documentation needs
+- **17 Templates:** All documentation needs
 - **Knowledge Base:** Learn and improve
 - **IDE Integration:** 5+ IDEs supported
 - **Automation:** Full-auto or manual modes

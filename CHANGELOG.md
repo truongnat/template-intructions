@@ -61,7 +61,7 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-## [1.1.0] - 2026-01-02 (Sprint 4 - Landing Page Awwwards Enhancement)
+## [1.0.3] - 2026-01-02 (Sprint 3 - Landing Page Awwwards Enhancement)
 
 ### Added
 - [UI] Award-winning 3D depth effects with layered shadows

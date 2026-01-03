@@ -45,9 +45,9 @@ This document defines the mandatory rules, conventions, and lifecycle flow that 
 ```
 
 ### Phase Details:
-1. **Planning** (PM) – Gather requirements, create project plan
+1. **Planning** (PM + BA) – Gather requirements, create project plan
 2. **Plan Approval** (User) – Explicit user sign-off required
-3. **Designing** (SA + UIUX + PO in parallel) – Architecture, UI/UX, backlog prioritization
+3. **Designing** (SA + UIUX + PO + BA in parallel) – Architecture, UI/UX, backlog prioritization
 4. **Design Verification** (QA + SecA in parallel) – Quality and security review
 5. **Development** (DEV + DevOps in parallel) – Implementation
 6. **Testing** (TESTER) – Functional, integration, E2E testing
@@ -92,7 +92,7 @@ Critical phases require explicit approval:
 
 ### 2. Auto-Communication via @Tags
 Always use @role tags to notify next agents.
-- **Available roles:** @ORCHESTRATOR, @PM, @PO, @SA, @UIUX, @QA, @SECA, @DEV, @DEVOPS, @TESTER, @REPORTER, @STAKEHOLDER
+- **Available roles:** @ORCHESTRATOR, @PM, @PO, @BA, @SA, @UIUX, @QA, @SECA, @DEV, @DEVOPS, @TESTER, @REPORTER, @STAKEHOLDER
 - Example: `### Next Step: @SA - Start designing` or `@TESTER - Please test`
 - **Orchestrator mode:** Add `--mode=full-auto` or `--mode=semi-auto` to enable automation
 
