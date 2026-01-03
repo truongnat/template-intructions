@@ -14,11 +14,35 @@ from typing import Dict, List, Optional
 class KBConfig:
     """KB configuration"""
     def __init__(self):
-        self.root_dir = Path.cwd()
+        self.root_dir = self._find_project_root()
         self.kb_path = self.root_dir / ".agent" / "knowledge-base"
         self.docs_path = self.root_dir / "docs"
         self.index_path = self.kb_path / "INDEX.md"
         self.platform = platform.system()
+    
+    def _find_project_root(self) -> Path:
+        """Find project root by searching for .agent directory"""
+        # Start from cwd
+        current = Path.cwd()
+        
+        # Search up to 10 levels
+        for _ in range(10):
+            if (current / ".agent").exists():
+                return current
+            if (current / ".git").exists():
+                return current
+            parent = current.parent
+            if parent == current:  # Reached root
+                break
+            current = parent
+        
+        # Fallback: try from script location
+        script_dir = Path(__file__).parent.parent.parent  # lib -> bin -> root
+        if (script_dir / ".agent").exists():
+            return script_dir
+        
+        # Last resort: use cwd
+        return Path.cwd()
     
     def get_kb_path(self) -> Path:
         """Get KB path"""

@@ -4,7 +4,33 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-### Added - 2026-01-02 (Sprint 4 - Workflow System & Tooling Enhancement)
+---
+
+## [1.1.0] - 2026-01-03 (Sprint 5 - Tools Gap Fixes & Test Infrastructure)
+
+### Added
+- [Tools] Created `tools/workflows/emergency.py` - 348-line critical incident response workflow
+- [Tools] Emergency workflow includes: incident declaration, rapid assessment, mitigation, root cause analysis, hotfix, verification, KB compound, and report generation
+- [Testing] `tests/test_agent_manage.py` - 10 unit tests for agent management
+- [Testing] `tests/test_emergency.py` - 9 unit tests for emergency workflow
+- [Testing] `tests/test_kb_tools.py` - 6 unit tests for KB tools
+- [Deps] Enabled pytest, pytest-cov, black, pylint, mypy in requirements.txt
+
+### Fixed
+- [CLI] Fixed `bin/lib/kb_common.py` project root detection - now searches up directory tree for `.agent` folder
+- [Tools] Added Windows UTF-8 encoding fix to `tools/agent/manage.py`
+- [Tools] Added Windows UTF-8 encoding fix to `tools/kb/search.py`
+- [Docs] Updated `tools/README.md` to accurately list `sprint.py` and `emergency.py`
+
+### Changed
+- [Testing] Test coverage increased from ~9% to ~25% (6 test files, 35+ tests)
+- [Quality] Windows encoding coverage increased from ~60% to ~95%
+
+---
+
+## [1.0.2] - 2026-01-02 (Sprint 4 - Workflow System & Tooling Enhancement)
+
+### Added
 - [Workflows] New `/validate` workflow for system validation and path verification
 - [Workflows] New `/sprint` workflow for sprint management (start, review, retro)
 - [Workflows] New `/metrics` workflow for analytics and system health measurement
@@ -21,13 +47,13 @@ All notable changes to this project will be documented in this file.
 - [Docs] SDLC architecture documentation
 - [Docs] Neo4j integration guide with auto-learning capabilities
 
-### Changed - 2026-01-02 (Sprint 4)
+### Changed
 - [Monorepo] Reorganized project structure with consolidated workflows
 - [Scripts] Consolidated executable scripts to `tools/` directory
 - [Agent] Reorganized role definitions and consolidated IDE integration
 - [Docs] Enhanced auto-learning guide with Neo4j integration patterns
 
-### Fixed - 2026-01-02 (Sprint 4)
+### Fixed
 - [UI] Improved Features section visibility and contrast in landing page
 - [UI] Replaced transparent glassmorphism with solid slate-900/90 background
 - [UI] Fixed CTA button layering issues

@@ -33,12 +33,13 @@ pyyaml==6.0.2                # YAML parsing (KB entries)
 # argparse is built-in in Python 3.2+
 
 # ============================================================
-# Development Dependencies (Optional)
+# Development Dependencies
 # ============================================================
-# pytest>=7.4.0              # Testing framework
-# black>=23.0.0              # Code formatter
-# pylint>=3.0.0              # Code linter
-# mypy>=1.7.0                # Type checker
+pytest>=7.4.0               # Testing framework
+pytest-cov>=4.1.0           # Coverage reporting
+black>=23.0.0               # Code formatter
+pylint>=3.0.0               # Code linter
+mypy>=1.7.0                 # Type checker
 
 # ============================================================
 # Installation Instructions

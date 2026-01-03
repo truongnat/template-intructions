@@ -36,9 +36,10 @@ tools/
 │   ├── manage.py            # Manage roles, workflows, templates, rules
 │   └── README.md
 │
-├── workflows/                # Workflow automation (from .agent/scripts/)
+├── workflows/                # Workflow automation
 │   ├── cycle.py             # Complete task lifecycle
 │   ├── housekeeping.py      # Maintenance and cleanup
+│   ├── sprint.py            # Sprint management
 │   └── emergency.py         # Critical incident response
 │
 ├── kb/                       # Knowledge base management (from .agent/scripts/)
