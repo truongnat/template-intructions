@@ -1,37 +1,25 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
-import StickyHeaderCTA from '../components/StickyHeaderCTA.astro';
-import Features from '../components/Features.astro';
-import Architecture from '../components/Architecture.astro';
+import ValueProp from '../components/ValueProp.astro';
 import BrainArchitecture from '../components/BrainArchitecture.astro';
-import UseCases from '../components/UseCases.astro';
-import TrustBadges from '../components/TrustBadges.astro';
-import GitHubStats from '../components/GitHubStats.astro';
-import QuickStart from '../components/QuickStart.astro';
-import Testimonials from '../components/Testimonials.astro';
-import FAQ from '../components/FAQ.astro';
-import Footer from '../components/Footer.astro';
 import RoleExplorer from '../components/RoleExplorer.astro';
-import StrictProtocol from '../components/StrictProtocol.astro';
+import Features from '../components/Features.astro';
+import QuickStart from '../components/QuickStart.astro';
+import Footer from '../components/Footer.astro';
 ---
 
 <Layout 
   title="Agentic SDLC - Ship Production-Ready Apps in Days, Not Months"
-  description="Watch AI handle planning, design, development, testing, and deployment. 12 specialized AI roles, automated workflows, and knowledge management for web, mobile, desktop, CLI, API, and embedded projects."
+  description="Watch AI handle planning, design, development, testing, and deployment. 12 specialized AI roles, automated workflows, and knowledge management."
 >
-  <StickyHeaderCTA />
-  <Hero />
-  <!-- <TrustBadges /> -->
-  <Features />
-  <StrictProtocol />
-  <!-- <Architecture /> -->
-  <BrainArchitecture />
-  <RoleExplorer />
-  <!-- <UseCases /> -->
-  <!-- <GitHubStats /> -->
-  <QuickStart />
-  <!-- <Testimonials /> -->
-  <!-- <FAQ /> -->
-  <Footer />
+  <main class="relative bg-slate-950 text-white selection:bg-blue-500/30 selection:text-blue-200">
+    <Hero />
+    <ValueProp />
+    <BrainArchitecture />
+    <RoleExplorer />
+    <Features />
+    <QuickStart />
+    <Footer />
+  </main>
 </Layout>
