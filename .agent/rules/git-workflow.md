@@ -1,53 +1,46 @@
 ---
 description: Unified Git and Task Workflow (Branching, Committing, Merging)
 ---
-
 # Git & Task Management Workflow
-
-**Requirement:** All tasks must follow the **Feature Branch Workflow** with atomic commits and explicit merge gates.
-
+**Requirement:** All tasks and artifacts must follow the **Branch-Based Workflow** with explicit merge gates.
 ## A. Branching Strategy (MANDATORY)
-- ❌ **NEVER** commit directly to `main` or `master`.
-- **Naming Convention:**
-  - Feature: `feat/TASK-ID-short-name`
-  - Bugfix: `fix/TASK-ID-short-name`
-  - Hotfix: `hotfix/short-name`
-- **Workflow:**
-  1. Pick task from `Development-Log`.
-  2. Create branch: `git checkout -b feat/TASK-ID-name`.
-  3. Push branch immediately: `git push -u origin feat/TASK-ID-name`.
-
+❌ **NEVER** commit directly to main or master. This applies to ALL ROLES (@PM, @BA, @SA, @DEV, etc.) and ALL FILE TYPES (Code, Docs, Logs).
+### Branch Naming Convention
+| Type | Prefix | Use Case |
+|------|--------|----------|
+| **Planning** | plan/ | Project plans, product backlogs (PM/BA) |
+| **Design** | design/ | Architecture schematics, UI specs (SA/UIUX/SECA) |
+| **Feature** | feat/ | New functionality (DEV) |
+| **Fix** | fix/ | Bug fixes (DEV) |
+| **Hotfix** | hotfix/ | Critical production fixes (DEV/DEVOPS) |
+| **Docs** | docs/ | General documentation updates (REPORTER) |
+**Format:** prefix/TASK-ID-short-name (e.g., plan/SPRINT-2-setup, feat/LP-001-hero-section)
+### Pre-Operation Safety Checks (STRICT)
+- **Before Checkout/Switch:** ALWAYS run git status. Ensure working directory is clean.
+  - If changes exist: Stash or Commit them first.
+- **Before Merge:** ALWAYS run git status. Ensure you are on the correct target branch and it is clean.
+### Workflow
+1. **Start:** git checkout -b prefix/TASK-ID-name from main.
+2. **Work:** Create artifacts or code.
+3. **Push:** git push -u origin prefix/TASK-ID-name.
+4. **Docs-as-Code:** Treat documentation exactly like code. It must be version controlled and reviewed.
 ## B. Atomic Commit Rule
-- **Frequency:** Commit for every logical sub-task or unit of work.
-- **Message Format:** `[TASK-ID] <type>: <description>`
-  - Types: `feat`, `fix`, `refactor`, `docs`, `test`, `chore`.
-  - Example: `[T-101] feat: implement oauth2 login flow`.
-- **Update Log:** Link every commit hash to the corresponding task in `Development-Log`.
-
+- **Frequency:** Commit for every logical unit of work.
+- **Message Format:** [TASK-ID] <type>: <description>
+  - Types: feat, fix, plan, design, docs, test, chore.
+  - Example: [LP-001] plan: draft sprint 2 project plan
 ## C. Pull Request & Merging (The Quality Gate)
-- **Initiation:** After completing a feature/fix building and local testing.
-- **PR Description:** Must list changes, link to issues, and provide evidence (screenshots/logs).
-- **Review Gate:** 
-  - **Code Review:** Must be reviewed by another `@DEV` or `@SA`.
-  - **QA Review:** Must be verified by `@TESTER` (Phase 6).
-- **Merging Rule:**
-  - ❌ **NEVER** self-merge without approval.
-  - Merging is done by `@DEVOPS` or `@SA` only after `@TESTER` provides `#testing-passed` tag.
-  - Use `Squash and Merge` to keep `main` history clean.
-
+- **Initiation:** Create PR when work block is ready for review.
+- **Review Gate:**
+  - **Planning/Docs:** Reviewed by Team/Stakeholders.
+  - **Code:** Reviewed by SA/DEV.
+  - **QA:** Verified by TESTER.
+- **Merge Authority:** DEVOPS or SA merges after Approval.
 ## D. Definition of Done (DoD)
 A task is "Done" ONLY when:
-1. [ ] Code implemented and branch created.
-2. [ ] Atomic commits linked in `Development-Log`.
-3. [ ] Pull Request created and reviewed.
-4. [ ] **TESTER verified** on the feature branch.
-5. [ ] Merged into `main`.
-6. [ ] CHANGELOG.md updated.
-
-## E. Automated Changelog Updates
-- **Requirement:** Every merge to `main` MUST trigger a `CHANGELOG.md` update.
-- **Format:** `[YYYY-MM-DD] [Version] [Type]: [Summary] (@Author)`
-
----
-
-#git-workflow #branching #atomic-commits #merging #dod
+1. [ ] Branch created and artifacts implemented.
+2. [ ] Commits linked in Development-Log.
+3. [ ] Pull Request created.
+4. [ ] **Approved/Verified** by designated reviewer.
+5. [ ] Merged into main.
+#git-workflow #branching #atomic-commits #merging #dod #docs-as-code
